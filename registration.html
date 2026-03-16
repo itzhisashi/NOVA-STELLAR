@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" style="scroll-padding-top: 5rem;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Registration | Nova Stellar 2026</title>
+    <title>Nova Stellar 2026 | SFS College Events</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,6 +28,7 @@
                     },
                     animation: {
                         'blob': 'blob 10s infinite',
+                        'marquee': 'marquee 25s linear infinite',
                     },
                     keyframes: {
                         blob: {
@@ -34,14 +36,16 @@
                             '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
                         }
                     }
                 }
             }
         }
     </script>
-
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
         body {
@@ -50,11 +54,17 @@
             overflow-x: hidden;
         }
         
-        ::-webkit-scrollbar { width: 10px; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #f5d061; }
 
+        /* Hide scrollbar for the modal body but allow scrolling */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Glassmorphism Utilities */
         .glass-nav {
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(16px);
@@ -73,7 +83,16 @@
             border-radius: 50%;
             filter: blur(120px);
             z-index: -1;
-            opacity: 0.35;
+            opacity: 0.25;
+        }
+
+        #canvas1 { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: -1; 
+            opacity: 0.4; 
+            pointer-events: none;
         }
 
         /* Checkbox custom styling */
@@ -85,35 +104,54 @@
             opacity: 1;
             transform: scale(1);
         }
-        
-        /* Smooth Form Fade */
-        .form-section {
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        .notimar{
+             position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 15px;
+  text-align: right;
+  font-size: 14px;
+  color: #fff;
+  z-index: 999999;
+
+   text-align: center;
+    padding: 10px;
+    background: rgba(27, 28, 31, 0.9);
         }
-        .form-hidden {
-            opacity: 0;
-            transform: translateY(10px);
-            pointer-events: none;
-            position: absolute;
-            visibility: hidden;
-        }
-        .form-visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-            position: relative;
-            visibility: visible;
-        }
+       
     </style>
 </head>
 <body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col">
     
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
-        <div class="bg-glow bg-brand-gold w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob opacity-20"></div>
-        <div class="bg-glow bg-brand-gold-light w-[400px] h-[400px] bottom-[10%] right-[-5%] animate-blob opacity-20" style="animation-delay: 2s;"></div>
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-2]">
+        <div class="bg-glow bg-brand-gold w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob"></div>
+        <div class="bg-glow bg-brand-gold-light w-[400px] h-[400px] bottom-[10%] right-[-5%] animate-blob" style="animation-delay: 2s;"></div>
     </div>
+    <canvas id="canvas1"></canvas>
 
-    <nav class="fixed w-full z-50 glass-nav py-4">
+    <!-- <nav class="fixed w-full z-50 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="flex flex-col cursor-pointer">
+                    <span class="font-display font-bold text-xl leading-tight tracking-[2px] text-white">NOVA <span class="text-brand-gold">STELLAR</span></span>
+                    <span class="text-[0.6rem] text-brand-gold uppercase tracking-[4px]">SFS College</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-semibold uppercase tracking-widest text-gray-300 hover:text-brand-gold-light transition-colors">Home</a>
+                    <a href="#events" class="text-sm font-semibold uppercase tracking-widest text-brand-gold hover:text-brand-gold-light transition-colors">Events & Reg</a>
+                    <a href="#about" class="text-sm font-semibold uppercase tracking-widest text-gray-300 hover:text-brand-gold-light transition-colors">About</a>
+                    <a href="#contact" class="text-sm font-semibold uppercase tracking-widest text-gray-300 hover:text-brand-gold-light transition-colors">Contact</a>
+                </div>
+                
+                <div class="md:hidden text-brand-gold text-2xl">
+                    <i class="ph-bold ph-list"></i>
+                </div>
+            </div>
+        </div>
+    </nav> -->
+     <nav class="fixed w-full z-50 glass-nav py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="flex items-center gap-2 group">
@@ -129,272 +167,406 @@
         </div>
     </nav>
 
-    <main class="flex-grow pt-32 pb-24 relative flex items-center justify-center">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+
+
+
+    <main class="flex-grow flex flex-col items-center">
+
+        
+        
+        <!-- <section id="home" class="pt-32 pb-4 min-h-[80vh] flex items-center justify-center w-full">
             
-            <div class="text-center mb-10 space-y-4">
+            <div class="max-w-4xl mx-auto px-4 text-center z-10 w-full">
+                <p class="font-display text-lg text-brand-gold tracking-[2px] uppercase mb-2">St. Francis De Sales College, Seminary Hills, Nagpur</p>
+                <p class="text-sm uppercase tracking-[5px] mb-6 opacity-80">Presents</p>
+                
+                <h1 class="font-display text-[clamp(3.5rem,10vw,7rem)] font-black text-white uppercase leading-[0.9] mb-8 drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                    NOVA <br>STELLAR
+                </h1>
+                
+                <p class="text-xl font-medium text-brand-gold-light tracking-wide mb-6">April 10-11, 2026</p>
+                
+                <p class="max-w-2xl mx-auto text-gray-400 text-lg italic mb-10">
+                    Embark on a celestial journey where talent meets the stars. Join the ultimate intercollegiate mega fest in Central India.
+                </p>
+            </div>
+        </section> -->
+
+        <section id="events" class="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <!-- <div class="text-center mb-16">
+                <h2 class="font-display text-5xl sm:text-6xl font-black text-white mb-4">THE <span class="text-brand-gold">STELLAR</span> LINEUP</h2>
+                <p class="text-gray-400">Click on any event below to open the registration form.</p>
+            </div> -->
+            <div class="text-center mb-16 space-y-4">
                 <h2 class="text-brand-gold font-semibold tracking-widest uppercase text-sm">Participant Portal</h2>
                 <h1 class="text-4xl sm:text-5xl font-display font-bold text-white">Event Registration</h1>
                 <p class="text-gray-400 text-sm max-w-lg mx-auto">Select a category below to view and register for specific events.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
-                <button onclick="switchTab('food')" id="tab-food" class="category-tab px-6 py-3 rounded-full border border-brand-gold bg-brand-gold/10 text-brand-gold-light font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)]">
-                    <i class="ph-bold ph-bowl-food text-xl"></i> Food Fest
-                </button>
-                
-                <button onclick="switchTab('literary')" id="tab-literary" class="category-tab px-6 py-3 rounded-full border border-gray-800 bg-[#000] text-gray-400 font-bold hover:border-brand-gold/50 hover:text-white flex items-center gap-2 transition-all">
-                    <i class="ph-bold ph-books text-xl"></i> Literary & Arts
-                </button>
+            <div class="mb-20">
+                <h2 class="font-display text-4xl text-white border-l-4 border-brand-gold pl-5 mb-8 font-bold">Day 1: April 10</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Food Fest</h3>
+                        <p class="text-gray-400 text-sm mb-4">A galactic culinary journey.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> 1. Hygiene mandatory. 2. Pre-registration required.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Prof. Deshpande</p>
+                        </div>
+                        <button onclick="openModal('food')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Register Stall</button>
+                    </div>
 
-                <button onclick="switchTab('annual')" id="tab-annual" class="category-tab px-6 py-3 rounded-full border border-gray-800 bg-[#000] text-gray-400 font-bold hover:border-brand-gold/50 hover:text-white flex items-center gap-2 transition-all">
-                    <i class="ph-bold ph-users-three text-xl"></i> Annual Day
-                </button>
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Debate</h3>
+                        <p class="text-gray-400 text-sm mb-4">The war of words and logic.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> 3 mins for speech, 1 min for rebuttal. Teams of 2.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Dr. Khan</p>
+                        </div>
+                        <button onclick="openModal('literary')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Join Debate</button>
+                    </div>
 
-                <button onclick="switchTab('night')" id="tab-night" class="category-tab px-6 py-3 rounded-full border border-gray-800 bg-[#000] text-gray-400 font-bold hover:border-brand-gold/50 hover:text-white flex items-center gap-2 transition-all">
-                    <i class="ph-bold ph-moon-stars text-xl"></i> Night Events
-                </button>
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Face Painting</h3>
+                        <p class="text-gray-400 text-sm mb-4">Turning faces into canvases.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> 60 mins time limit. Skin-safe colors only. Solo/Duo.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Prof. Iyer</p>
+                        </div>
+                        <button onclick="openModal('literary')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Register Now</button>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Poster & Sketch</h3>
+                        <p class="text-gray-400 text-sm mb-4">Visual storytelling.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> Topic provided at venue. Solo entry only.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Prof. Sharma</p>
+                        </div>
+                        <button onclick="openModal('literary')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Register Now</button>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="glass-card rounded-[2rem] border border-brand-gold/30 p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)] relative min-h-[500px]">
-                
-                <div id="form-food" class="form-section form-visible">
-                    <div class="flex items-center gap-3 border-b border-gray-800 pb-4 mb-6">
-                        <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold-light"></i>
-                        <h3 class="text-2xl font-bold text-white">Food Fest Registration</h3>
-                    </div>
+            <div>
+                <h2 class="font-display text-4xl text-white border-l-4 border-brand-gold pl-5 mb-8 font-bold">Day 2: April 11</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Group Dance</h3>
+                        <p class="text-gray-400 text-sm mb-4">Rhythm of the cosmos.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> Max 5 mins per act. Tracks submitted prior.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Dr. Mehta</p>
+                        </div>
+                        <button onclick="openModal('annual')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Sign Up</button>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Stellar Walk</h3>
+                        <p class="text-gray-400 text-sm mb-4">Fashion show finale.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> Theme-based costumes only. Groups or solo models.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Prof. Kulkarni</p>
+                        </div>
+                        <button onclick="openModal('night')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Register Group</button>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Band Battle</h3>
+                        <p class="text-gray-400 text-sm mb-4">Let the music take control.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> 10 mins setup + performance time. Live instruments.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Dr. Williams</p>
+                        </div>
+                        <button onclick="openModal('night')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Book Slot</button>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 group flex flex-col">
+                        <h3 class="font-display text-brand-gold-light text-2xl font-bold mb-2">Voice of Nova</h3>
+                        <p class="text-gray-400 text-sm mb-4">Singing competition.</p>
+                        <div class="text-sm text-gray-300 border-t border-brand-gold/20 pt-4 space-y-3 flex-grow">
+                            <p><b class="text-brand-gold">Rules:</b> No lip-syncing allowed. Solo/Duet entries.</p>
+                            <p><b class="text-brand-gold">Coord:</b> Prof. Bakshi</p>
+                        </div>
+                        <button onclick="openModal('annual')" class="w-full bg-brand-gold hover:bg-brand-gold-light text-black font-bold py-3 rounded-xl mt-6 uppercase text-xs tracking-wider transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">Register Now</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="pt-24 pb-24 max-w-4xl mx-auto px-4 text-left w-full">
+            <h4 class="font-display text-brand-gold text-4xl sm:text-5xl text-center font-black mb-8 uppercase">Important Notes</h4>
+            <div class="text-gray-400 text-lg sm:text-xl leading-relaxed glass-card p-10 rounded-3xl">
+            <div class="flex gap-4">
+                <span class="text-brand-gold font-bold font-display">1.</span>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    If the page is reloaded after payment, you do <span class="text-brand-gold-light font-bold">not</span> need to pay again. Simply re-fill the form with your details and enter the <span class="text-white font-semibold">Transaction ID / UTR</span> to get your receipt.
+                </p>
+            </div>
+
+            <div class="flex gap-4 mt-8">
+                <span class="text-brand-gold font-bold font-display">2.</span>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    After full verification of your payment, you will receive an official <span class="text-brand-gold-light font-bold">Entry Card / Document</span> for the event in your registered email within <span class="text-white font-semibold">12–24 hours</span>. Without this verified form/receipt, <span class="underline decoration-brand-gold/50 underline-offset-4 text-brand-gold-light">you will not be allowed entry</span>.
+                </p>
+            </div>
+        </div>
+        </section>
+
+        <!-- <section id="contact" class="pt-24 pb-24 max-w-2xl mx-auto px-4 text-center w-full">
+            <h2 class="font-display text-white text-4xl sm:text-5xl font-black mb-10 uppercase">Contact Us</h2>
+            <div class="glass-card p-10 rounded-[2rem] shadow-[0_0_40px_rgba(212,175,55,0.05)]">
+                <i class="ph-duotone ph-map-pin text-5xl text-brand-gold mb-4 inline-block"></i>
+                <p class="text-brand-gold-light text-xl font-bold mb-6">SFS College, Seminary Hills, Nagpur</p>
+                <div class="space-y-4 text-gray-400 text-lg">
+                    <p class="flex items-center justify-center gap-2"><i class="ph-bold ph-envelope-simple text-brand-gold"></i> contact@novastellar.com</p>
+                    <p class="flex items-center justify-center gap-2"><i class="ph-bold ph-phone text-brand-gold"></i> +91 98765 00000</p>
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+
+    <div id="registrationModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-0 sm:p-6 transition-opacity">
+        <div class="bg-[#0a0a0a] border border-brand-gold/20 w-full h-full sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-[2rem] shadow-[0_0_50px_rgba(212,175,55,0.15)] flex flex-col relative overflow-hidden">
+            
+            <div class="flex justify-between items-center p-6 border-b border-gray-800 bg-[#050505] shrink-0">
+                <h2 class="text-xl font-display font-bold text-white tracking-widest uppercase">Registration</h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-brand-gold-light bg-gray-900 p-2 rounded-full transition-colors">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="overflow-y-auto p-6 sm:p-8 hide-scrollbar flex-grow bg-[#0a0a0a]">
+                
+                <div id="modal-form-food" class="modal-form hidden">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold-light"></i>
+                        <h3 class="text-2xl font-bold text-white">Food Fest</h3>
+                    </div>
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-4">
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="food_events" value="stall" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
                                     <div>
                                         <span class="block text-white font-bold mb-0.5">Book a Food Stall</span>
-                                        <span class="text-xs text-gray-500 block">Set up your own fete stall. Limited spots!</span>
                                     </div>
                                 </div>
                             </label>
-                            
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="food_events" value="cooking" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
                                     <div>
                                         <span class="block text-white font-bold mb-0.5">Cooking Competition</span>
-                                        <span class="text-xs text-gray-500 block">Showcase your culinary skills (Fireless cooking).</span>
                                     </div>
                                 </div>
                             </label>
                         </div>
-
                         <div class="grid sm:grid-cols-2 gap-5 pt-4">
                             <div class="space-y-2">
-                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Full Name / Team Name</label>
-                                <input type="text" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Team Name</label>
+                                <input type="text" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Phone Number</label>
-                                <input type="tel" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <input type="tel" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                         </div>
-                        
                         <div class="space-y-2">
-                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Cuisine/Stall Details (If booking stall)</label>
-                            <input type="text" placeholder="E.g., South Indian, Mocktails, Desserts" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Cuisine Details</label>
+                            <input type="text" placeholder="E.g., South Indian, Mocktails" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
                         </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
-                            Submit Food Fest Registration <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                            Submit Registration <i class="ph-bold ph-arrow-right"></i>
                         </button>
                     </form>
                 </div>
 
-                <div id="form-literary" class="form-section form-hidden">
-                    <div class="flex items-center gap-3 border-b border-gray-800 pb-4 mb-6">
+                <div id="modal-form-literary" class="modal-form hidden">
+                    <div class="flex items-center gap-3 mb-6">
                         <i class="ph-duotone ph-books text-3xl text-brand-gold-light"></i>
                         <h3 class="text-2xl font-bold text-white">Literary & Arts</h3>
                     </div>
-                    
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-4">
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="lit_events" value="debate" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <div>
-                                        <span class="block text-white font-bold mb-0.5">Debate Competition</span>
-                                        <span class="text-xs text-gray-500 block">Team of 2 required.</span>
-                                    </div>
+                                    <span class="block text-white font-bold">Debate</span>
                                 </div>
                             </label>
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="lit_events" value="painting" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <div>
-                                        <span class="block text-white font-bold mb-0.5">Face Painting</span>
-                                        <span class="text-xs text-gray-500 block">Solo or Duo allowed.</span>
-                                    </div>
+                                    <span class="block text-white font-bold">Face Painting</span>
                                 </div>
                             </label>
-                             <label class="relative cursor-pointer group">
+                             <label class="relative cursor-pointer group sm:col-span-2">
                                 <input type="checkbox" name="lit_events" value="sketching" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <div>
-                                        <span class="block text-white font-bold mb-0.5">Pencil Sketching</span>
-                                        <span class="text-xs text-gray-500 block">Solo Entry.</span>
-                                    </div>
+                                    <span class="block text-white font-bold">Pencil Sketching</span>
                                 </div>
                             </label>
                         </div>
-
                         <div class="grid sm:grid-cols-2 gap-5 pt-4">
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Full Name</label>
-                                <input type="text" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <input type="text" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">College Name</label>
-                                <input type="text" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <input type="text" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                         </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
-                            Submit Literary Registration <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                            Submit Registration <i class="ph-bold ph-arrow-right"></i>
                         </button>
                     </form>
                 </div>
 
-                <div id="form-annual" class="form-section form-hidden">
-                    <div class="flex items-center gap-3 border-b border-gray-800 pb-4 mb-6">
+                <div id="modal-form-annual" class="modal-form hidden">
+                    <div class="flex items-center gap-3 mb-6">
                         <i class="ph-duotone ph-users-three text-3xl text-brand-gold-light"></i>
-                        <h3 class="text-2xl font-bold text-white">Annual Day Performances</h3>
+                        <h3 class="text-2xl font-bold text-white">Annual Day</h3>
                     </div>
-                    
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-3 gap-4">
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="annual_events" value="dance" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
                                     <div class="w-5 h-5 rounded border border-gray-600 flex items-center justify-center group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <span class="block text-white font-bold">Group Dance</span>
+                                    <span class="block text-white font-bold text-sm">Dance</span>
                                 </div>
                             </label>
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="annual_events" value="singing" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
                                     <div class="w-5 h-5 rounded border border-gray-600 flex items-center justify-center group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <span class="block text-white font-bold">Singing (Solo/Duet)</span>
+                                    <span class="block text-white font-bold text-sm">Singing</span>
                                 </div>
                             </label>
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="annual_events" value="instrumental" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex flex-col items-center text-center gap-2 h-full">
                                     <div class="w-5 h-5 rounded border border-gray-600 flex items-center justify-center group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <span class="block text-white font-bold">Instrumental</span>
+                                    <span class="block text-white font-bold text-sm">Instruments</span>
                                 </div>
                             </label>
                         </div>
-
                         <div class="grid sm:grid-cols-2 gap-5 pt-4">
                             <div class="space-y-2">
-                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Lead Performer Name</label>
-                                <input type="text" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Lead Name</label>
+                                <input type="text" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Group Size (If applicable)</label>
-                                <input type="number" min="1" max="15" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+                                <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Group Size</label>
+                                <input type="number" min="1" max="15" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
                             </div>
                         </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
-                            Submit Annual Day Registration <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                            Submit Registration <i class="ph-bold ph-arrow-right"></i>
                         </button>
                     </form>
                 </div>
 
-                <div id="form-night" class="form-section form-hidden">
-                    <div class="flex items-center gap-3 border-b border-gray-800 pb-4 mb-6">
+                <div id="modal-form-night" class="modal-form hidden">
+                    <div class="flex items-center gap-3 mb-6">
                         <i class="ph-duotone ph-moon-stars text-3xl text-brand-gold-light"></i>
-                        <h3 class="text-2xl font-bold text-white">Night Events & Fashion Show</h3>
+                        <h3 class="text-2xl font-bold text-white">Night Events</h3>
                     </div>
-                    
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-4">
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="night_events" value="fashion" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <div>
-                                        <span class="block text-white font-bold mb-0.5 text-brand-gold-light">Fashion Show Finale</span>
-                                        <span class="text-xs text-gray-500 block">Register as a model. Auditions required.</span>
-                                    </div>
+                                    <span class="block text-brand-gold-light font-bold">Fashion Show Finale</span>
                                 </div>
                             </label>
-                            
                             <label class="relative cursor-pointer group">
                                 <input type="checkbox" name="night_events" value="band" class="custom-checkbox sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
+                                <div class="p-4 bg-[#050505] border border-gray-800 rounded-xl transition-all hover:bg-gray-900 flex items-start gap-3 h-full">
                                     <div class="w-5 h-5 mt-0.5 rounded border border-gray-600 flex items-center justify-center shrink-0 group-hover:border-brand-gold transition-colors">
                                         <i class="ph-bold ph-check text-brand-gold-light opacity-0 scale-50 transition-all check-icon text-xs"></i>
                                     </div>
-                                    <div>
-                                        <span class="block text-white font-bold mb-0.5">Live Band Battle</span>
-                                        <span class="text-xs text-gray-500 block">Register your band for the night showcase.</span>
-                                    </div>
+                                    <span class="block text-white font-bold">Live Band Battle</span>
                                 </div>
                             </label>
                         </div>
-
                         <div class="grid sm:grid-cols-2 gap-5 pt-4">
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Name / Band Name</label>
-                                <input type="text" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                                <input type="text" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Instagram Handle</label>
-                                <input type="text" placeholder="@username" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+                                <input type="text" placeholder="@username" class="w-full bg-[#050505] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
                             </div>
                         </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
-                            Submit Night Event Registration <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                            Submit Registration <i class="ph-bold ph-arrow-right"></i>
                         </button>
                     </form>
                 </div>
-
+                
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="bg-[#000] py-8 border-t border-brand-gold/20 relative mt-auto">
+    <div class="notimar flex overflow-hidden bg-[#0a0a0a] border-y border-brand-gold/20 py-3 pointer-events-none">
+        <div class="flex animate-marquee whitespace-nowrap">
+            <span class="text-brand-gold-light text-sm font-semibold tracking-widest uppercase mx-8">✨ APRIL 10-11: THE STELLAR EVENT OF THE YEAR! • ✨ REGISTRATIONS OPEN NOW • ✨ OVER 50+ COLLEGES PARTICIPATING • ✨ PRIZES WORTH ₹50K+ TO BE WON!</span>
+        </div>
+        <div class="flex animate-marquee whitespace-nowrap" aria-hidden="true">
+            <span class="text-brand-gold-light text-sm font-semibold tracking-widest uppercase mx-8">✨ APRIL 10-11: THE STELLAR EVENT OF THE YEAR! • ✨ REGISTRATIONS OPEN NOW • ✨ OVER 50+ COLLEGES PARTICIPATING • ✨ PRIZES WORTH ₹50K+ TO BE WON!</span>
+        </div>
+        <div class="flex animate-marquee whitespace-nowrap" aria-hidden="true">
+            <span class="text-brand-gold-light text-sm font-semibold tracking-widest uppercase mx-8">✨ APRIL 10-11: THE STELLAR EVENT OF THE YEAR! • ✨ REGISTRATIONS OPEN NOW • ✨ OVER 50+ COLLEGES PARTICIPATING • ✨ PRIZES WORTH ₹50K+ TO BE WON!</span>
+        </div>
+    </div>
+
+    <footer class="bg-[#050505] py-10 border-t border-brand-gold/20 mb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-2xl leading-tight tracking-[2px] text-white">NOVA <span class="text-brand-gold">STELLAR</span></span>
+                    <span class="text-[0.6rem] text-gray-500 uppercase tracking-[4px]">SFS College Events</span>
+                </div>
+                
                 <p class="text-gray-500 text-sm">
                     © 2026 Nova Stellar Core Committee. All rights reserved.
                 </p>
-                <div class="text-sm font-medium text-gray-400 bg-gray-900/50 px-6 py-2 rounded-full border border-brand-gold/30">
+
+                <div class="text-sm font-medium text-gray-400 bg-gray-900/50 px-6 py-2 rounded-full border border-brand-gold/20">
                     Developed by <a href="https://im-ayu-sh.netlify.app" target="_blank" class="text-brand-gold hover:text-brand-gold-light transition-colors underline decoration-brand-gold/30 underline-offset-4">Ayush Patil</a>
                 </div>
             </div>
@@ -402,40 +574,85 @@
     </footer>
 
     <script>
-        function switchTab(categoryId) {
-            // 1. Get all tabs and form sections
-            const allTabs = document.querySelectorAll('.category-tab');
-            const allForms = document.querySelectorAll('.form-section');
-
-            // 2. Hide all forms and reset all tab styles
-            allForms.forEach(form => {
-                form.classList.remove('form-visible');
-                form.classList.add('form-hidden');
-            });
-
-            allTabs.forEach(tab => {
-                // Remove active classes
-                tab.classList.remove('border-brand-gold', 'bg-brand-gold/10', 'text-brand-gold-light', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
-                // Add inactive classes
-                tab.classList.add('border-gray-800', 'bg-[#000]', 'text-gray-400');
-            });
-
-            // 3. Show the target form
-            const targetForm = document.getElementById(`form-${categoryId}`);
+        // Modal Logic
+        function openModal(categoryId) {
+            const modal = document.getElementById('registrationModal');
+            
+            // Hide all forms inside modal
+            document.querySelectorAll('.modal-form').forEach(form => form.classList.add('hidden'));
+            
+            // Show the target form
+            const targetForm = document.getElementById(`modal-form-${categoryId}`);
             if (targetForm) {
-                targetForm.classList.remove('form-hidden');
-                targetForm.classList.add('form-visible');
+                targetForm.classList.remove('hidden');
             }
 
-            // 4. Highlight the active tab
-            const targetTab = document.getElementById(`tab-${categoryId}`);
-            if (targetTab) {
-                // Remove inactive classes
-                targetTab.classList.remove('border-gray-800', 'bg-[#000]', 'text-gray-400');
-                // Add active classes
-                targetTab.classList.add('border-brand-gold', 'bg-brand-gold/10', 'text-brand-gold-light', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+            // Display Modal and prevent body scrolling
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('registrationModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = ''; // restore scrolling
+        }
+
+        // Close modal if user clicks the overlay outside the form
+        document.getElementById('registrationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Canvas Particle System
+        const canvas = document.getElementById('canvas1');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
+
+        function init() {
+            for (let i = 0; i < 150; i++) particlesArray.push(new Particle());
+        }
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            particlesArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>

@@ -149,6 +149,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Full Screen Window Animations */
+        @keyframes windowEnter {
+            0% { opacity: 0; transform: scale(0.95) translateY(15px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes windowExit {
+            0% { opacity: 1; transform: scale(1) translateY(0); }
+            100% { opacity: 0; transform: scale(0.95) translateY(15px); }
+        }
+        
+        .window-active {
+            display: flex !important;
+            animation: windowEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .window-closing {
+            display: flex !important;
+            animation: windowExit 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
     </style>
 </head>
 <body class="relative antialiased selection:bg-brand-gold selection:text-black">
@@ -310,100 +329,730 @@
         </div>
     </section>
 
-    <section id="events" class="py-24 relative bg-[#050505] border-y border-brand-gold/10">
+   <section id="events" class="py-24 relative bg-[#050505] border-y border-brand-gold/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <h2 class="text-brand-gold font-semibold tracking-widest uppercase text-sm">Discover</h2>
                 <h3 class="text-4xl sm:text-5xl font-display font-bold text-white">Flagship Domains</h3>
                 <p class="text-gray-400">Dive into a multitude of arenas designed to test your limits, spark creativity, and entertain.</p>
             </div>
+            <!-- Day 1 buttons -->
+            <h2 class="font-display text-4xl text-white border-l-4 border-brand-gold pl-5 mb-10 font-bold mt-16">Day 1: April 10</h2>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                 
-                <button onclick="fetchEventData('food')" id="evt-btn-food" class="event-category-btn text-left block group outline-none w-full">
+                <button onclick="openWindow('window-food')" class="text-left block group outline-none w-full">
                     <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
                         <i class="ph-duotone ph-bowl-food text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
                         <h4 class="text-2xl font-bold text-white mb-3">Food Fest</h4>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
                         <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
-                            View Info <i class="ph-bold ph-caret-down ml-2"></i>
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
                         </span>
                     </div>
                 </button>
 
-                <button onclick="fetchEventData('literary')" id="evt-btn-literary" class="event-category-btn text-left block group outline-none w-full">
+                <button onclick="openWindow('window-debate')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
+                        <i class="ph-duotone ph-microphone-stage text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Debate</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Engage in a high-stakes battle of wits and words, where sharp logic and persuasive oratory define the ultimate champions.</p>
+                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </button>
+
+                <button onclick="openWindow('window-face-painting')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
+                        <i class="ph-duotone ph-microphone-stage text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Face Painting</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Transform a living canvas into a vivid masterpiece, where mythical imagination meets the stroke of a brush to redefine beauty.</p>
+                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </button>
+
+                <button onclick="openWindow('window-poster')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
+                        <i class="ph-duotone ph-microphone-stage text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Poster Making</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Bridge the gap between art and advocacy, using bold visuals and powerful slogans to design a message for the future.</p>
+                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </button>
+
+                <button onclick="openWindow('window-pencil')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
+                        <i class="ph-duotone ph-microphone-stage text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Pencil Sketching</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Master the symphony of light and shadow, capturing the soul of your subject with nothing but lead, paper, and precision.</p>
+                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </button>
+
+            </div>
+
+            <!-- Day 2 buttons -->
+             <h2 class="font-display text-4xl text-white border-l-4 border-brand-gold pl-5 mb-10 mt-16 font-bold">Day 2: April 11</h2>
+             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                
+                <button onclick="openWindow('window-instrument')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
+                        <i class="ph-duotone ph-bowl-food text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Instrument</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Resonate with the rhythm of the soul, where strings, keys, and percussion unite to create a symphony of pure instrumental magic.</p>
+                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </button>
+
+                <button onclick="openWindow('window-singing')" class="text-left block group outline-none w-full">
                     <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
                         <i class="ph-duotone ph-books text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h4 class="text-2xl font-bold text-white mb-3">Literary & Arts</h4>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Showcase your creativity through debates, sketching, painting, and competitive arts.</p>
+                        <h4 class="text-2xl font-bold text-white mb-3">Singing</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Harness the power of the human voice to command the stage, turning every lyric and note into a profound emotional journey.</p>
                         <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
-                            View Info <i class="ph-bold ph-caret-down ml-2"></i>
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
                         </span>
                     </div>
                 </button>
 
-                <button onclick="fetchEventData('annual')" id="evt-btn-annual" class="event-category-btn text-left block group outline-none w-full">
-                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
+                <button onclick="openWindow('window-dance')" class="text-left block group outline-none w-full">
+                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full border-brand-gold/30 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
-                        <i class="ph-duotone ph-users-three text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h4 class="text-2xl font-bold text-white mb-3">Annual Day</h4>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">The grand college opening performances featuring instrumental, singing, and group dances.</p>
+                        <i class="ph-duotone ph-music-notes text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                        <h4 class="text-2xl font-bold text-white mb-3">Dance Festival</h4>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">Feel the beat and own the stage in our mega inter-college dance competition.</p>
                         <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
-                            View Info <i class="ph-bold ph-caret-down ml-2"></i>
+                            View Details <i class="ph-bold ph-arrow-right ml-2"></i>
                         </span>
                     </div>
                 </button>
 
-                <button onclick="fetchEventData('night')" id="evt-btn-night" class="event-category-btn text-left block group outline-none w-full">
-                    <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
-                        <i class="ph-duotone ph-moon-stars text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h4 class="text-2xl font-bold text-white mb-3">Night Events</h4>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">The ultimate showcase: Live bands, vocal solos, and the highly anticipated Fashion Show.</p>
-                        <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
-                            View Info <i class="ph-bold ph-caret-down ml-2"></i>
-                        </span>
-                    </div>
-                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="window-food" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
+                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Food Fest</h2>
+            </div>
+            <button onclick="closeWindow('window-food')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+                Close Window <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+    <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+        <div class="flex items-center gap-3">
+            <i class="ph-duotone ph-microphone-stage text-3xl text-brand-gold"></i>
+            <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Debate Competition</h2>
+        </div>
+        <button onclick="closeWindow('window-debate')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+            Close Window <i class="ph-bold ph-x text-lg"></i>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+        <div class="max-w-4xl mx-auto space-y-10">
+            
+            <div class="text-center space-y-4">
+                <h3 class="text-3xl sm:text-4xl font-display font-bold text-white">The Great <span class="text-brand-gold">Verbal Duel</span></h3>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto italic">
+                    "Engage in a battle of wits and words, where sharp logic meets persuasive oratory to conquer the floor."
+                </p>
             </div>
 
-            <div id="dynamic-events-panel" class="mt-12 max-w-5xl mx-auto panel-hidden relative z-0">
-                <div class="glass-card rounded-[2rem] border border-brand-gold/40 p-8 sm:p-12 shadow-[0_0_60px_rgba(212,175,55,0.15)] relative overflow-hidden">
-                    
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
+            <div class="bg-gradient-to-r from-[#0a0a0a] to-[#1a1a1a] border-y border-brand-gold/30 p-8 rounded-2xl shadow-[0_0_30px_rgba(212,175,55,0.1)] text-center">
+                <span class="text-brand-gold text-xs font-bold uppercase tracking-[0.3em]">Official Motion</span>
+                <h4 class="text-xl sm:text-2xl text-white font-medium mt-3 leading-relaxed">
+                    "Traditional Media is a tool for sharing authentic global information during geopolitical crises."
+                </h4>
+            </div>
 
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-gray-800 pb-6 relative z-10">
-                        <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-full bg-brand-gold/10 flex items-center justify-center border border-brand-gold/30">
-                                <i id="panel-icon" class="text-3xl text-brand-gold-light"></i>
-                            </div>
-                            <div>
-                                <h3 id="panel-title" class="text-3xl font-display font-bold text-white">Category Title</h3>
-                                <p id="panel-desc" class="text-gray-400 text-sm mt-1">Category description goes here.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-users-three text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Team Size</p>
+                    <p class="text-white font-bold">2 Members</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-clock text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Reporting Time</p>
+                    <p class="text-white font-bold">9:15 AM</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-wallet text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Entry Fee</p>
+                    <p class="text-white font-bold">₹500 / Team</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-calendar-check text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Deadline</p>
+                    <p class="text-white font-bold text-red-400">10th April</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-6">
+                    <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                        <i class="ph-bold ph-list-numbers"></i> Competition Rounds
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
+                            <p class="text-white font-bold">Round 1: Preliminary</p>
+                            <p class="text-gray-400 text-sm">Each team member gets <span class="text-brand-gold-light">3 minutes</span> to present their specific argument (1 For, 1 Against).</p>
+                        </div>
+                        <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
+                            <p class="text-white font-bold">Round 2: Finals</p>
+                            <p class="text-gray-400 text-sm">The floor will open for <span class="text-brand-gold-light">rebuttals</span> and cross-questioning moderated by the judge.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-4">
+                    <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                        <i class="ph-bold ph-scales"></i> Participation Rules
+                    </h3>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Preparedness for both 'For' and 'Against' arguments is mandatory.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Participants must wear College Uniform and carry their ID Card.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> One team per college is permitted.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Judge's decision is final and binding.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-red-500/5 border border-red-500/20 p-4 rounded-xl text-center">
+                <p class="text-red-400 text-xs font-bold uppercase tracking-widest">
+                    <i class="ph-fill ph-info"></i> Submissions of fees and forms must be done at the registration desk on the day of the event.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="window-face-painting" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
+                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Face Painting</h2>
+            </div>
+            <button onclick="closeWindow('window-face-painting')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+                Close Window <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!--  -->
+                <div class="text-center space-y-3">
+                    <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wider">Face Painting</h3>
+                    <p class="text-brand-gold font-mono">Venue: Seminar Hall</p>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">Transform a face into a masterpiece! Theme: Fantasy or Mythical.</p>
+                </div>
+                <!-- New code for face Painting -->
+                 
+                <div class="bg-red-900/20 border border-red-500/30 p-3 rounded-xl text-center text-red-400 font-bold text-sm shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                        <i class="ph-bold ph-clock-countdown text-lg align-middle mr-1"></i> Last Date for Registration: April 07, 2026
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                            <i class="ph-duotone ph-calendar-blank text-2xl text-brand-gold mb-2"></i>
+                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Event Date</p>
+                            <p class="text-white font-bold text-sm">Day 1 (Apr 10, 2026)</p>
+                        </div>
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                            <i class="ph-duotone ph-map-pin text-2xl text-brand-gold mb-2"></i>
+                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Venue</p>
+                            <p class="text-white font-bold">Seminar Hall</p>
+                        </div>
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                            <i class="ph-duotone ph-hourglass-medium text-2xl text-brand-gold mb-2"></i>
+                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Time Limit</p>
+                            <p class="text-white font-bold">1 Hour</p>
+                        </div>
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-brand-gold/20 text-brand-gold-light text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">NO REFUND</div>
+                            <i class="ph-duotone ph-ticket text-2xl text-brand-gold mb-2 mt-1"></i>
+                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Registration Fee</p>
+                            <p class="text-white font-bold">₹199/-</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-display font-bold text-white mb-5 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                                <i class="ph-fill ph-warning-circle text-brand-gold"></i> Rules & Regulations
+                            </h4>
+                            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl h-full">
+                                <ul class="space-y-3 text-sm text-gray-300">
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must bring a student whose face they will paint.</li>
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Start with a clean face; pre-painted faces/masks are not permitted.</li>
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Individual work only; no collaborative efforts allowed.</li>
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Designs must be original. No copyrighted/trademarked images.</li>
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Offensive/inappropriate content will result in disqualification.</li>
+                                    <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Maintain a clean workspace during and after the event.</li>
+                                </ul>
                             </div>
                         </div>
-                        <button onclick="closeEventPanel()" class="text-gray-500 hover:text-white transition-colors flex items-center gap-1 text-sm font-semibold bg-gray-900 px-4 py-2 rounded-full border border-gray-800 hover:border-gray-600">
-                            Close Panel <i class="ph-bold ph-x"></i>
-                        </button>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-display font-bold text-white mb-5 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                                    <i class="ph-fill ph-magic-wand text-brand-gold"></i> Theme & Materials
+                                </h4>
+                                <div class="bg-[#0a0a0a] border border-brand-gold/30 p-5 rounded-2xl mb-4 shadow-[0_0_20px_rgba(212,175,55,0.05)] text-center">
+                                    <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Official Theme</p>
+                                    <p class="text-2xl font-bold text-brand-gold-light">Fantasy or Mythical</p>
+                                </div>
+                                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                                    <p class="text-brand-gold font-semibold mb-3 text-sm">Approved Skin-Safe Materials:</p>
+                                    <ul class="grid grid-cols-2 gap-2 text-sm text-gray-400">
+                                        <li>• Water-Based Paints</li>
+                                        <li>• Brushes & Sponges</li>
+                                        <li>• Palette/Mixing Dish</li>
+                                        <li>• Mirror</li>
+                                        <li>• Water & Towels</li>
+                                        <li>• Palette Knife</li>
+                                        <li>• Aprons/Protectors</li>
+                                        <li>• First Aid Kit</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="relative z-10">
-                        <ul id="panel-event-list" class="grid sm:grid-cols-2 gap-4">
-                            </ul>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-gray-800 p-6 rounded-2xl text-center flex flex-col justify-center">
+                            <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-sm">🏆 Judging Criteria</h4>
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Creativity</span>
+                                <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Skill & Technique</span>
+                                <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Adherence to Theme</span>
+                                <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Overall Visual Impact</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-brand-gold/20 to-brand-gold-dark/10 border border-brand-gold/30 p-6 rounded-2xl text-center flex flex-col justify-center">
+                            <h4 class="text-white font-bold mb-2 uppercase tracking-widest text-sm">🎁 Prizes</h4>
+                            <p class="text-brand-gold-light text-lg font-semibold">Exciting Cash Prizes for Winners!</p>
+                            <p class="text-gray-300 text-sm mt-2">Participation Certificates for all.</p>
+                        </div>
                     </div>
-                    
-                    <div class="mt-10 text-center relative z-10">
-                        <a href="#register" class="inline-flex items-center gap-2 px-8 py-3 bg-brand-gold text-black font-bold rounded-full hover:bg-brand-gold-light hover:shadow-[0_0_20px_rgba(245,208,97,0.4)] transition-all">
-                            Proceed to Register <i class="ph-bold ph-arrow-right"></i>
-                        </a>
+
+                    <div class="border-t border-gray-800 pt-8 mt-8">
+                        <h4 class="text-xl font-display font-bold text-white mb-6 text-center">Event Coordinators</h4>
+                        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                            
+                            <div class="text-center w-full md:w-auto">
+                                <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Teacher Coordinator</p>
+                                <div class="bg-[#0a0a0a] border border-gray-800 px-6 py-3 rounded-xl inline-block">
+                                    <p class="text-white font-bold">Ms. Shruti Chourasia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="hidden md:block w-px h-16 bg-gray-800"></div>
+                            
+                            <div class="text-center w-full md:w-auto">
+                                <p class="text-gray-500 text-xs uppercase tracking-wider mb-3">Student Coordinators</p>
+                                <div class="flex flex-wrap justify-center gap-4">
+                                    <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                        <p class="text-white text-sm font-bold">Rajveer Nageshwar</p>
+                                        <a href="tel:+917067246551" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7067246551</a>
+                                    </div>
+                                    <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                        <p class="text-white text-sm font-bold">Nupur Bajait</p>
+                                        <a href="tel:+917798732506" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7798732506</a>
+                                    </div>
+                                    <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                        <p class="text-white text-sm font-bold">Aayana Bansod</p>
+                                        <a href="tel:+917709698988" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7709698988</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <!-- End face painting -->
+            </div>
+        </div>
+    </div>
+
+    <div id="window-poster" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
+                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Poster Making</h2>
+            </div>
+            <button onclick="closeWindow('window-poster')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+                Close Window <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-pencil" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
+                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Pencil Sketching</h2>
+            </div>
+            <button onclick="closeWindow('window-pencil')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+                Close Window <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-instrument" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
+                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Instrument</h2>
+            </div>
+            <button onclick="closeWindow('window-instrument')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+                Close Window <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-singing" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+    <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+        <div class="flex items-center gap-3">
+            <i class="ph-duotone ph-microphone-stage text-3xl text-brand-gold"></i>
+            <h2 class="text-xl sm:text-2xl font-display font-bold text-white tracking-widest uppercase">Singing Competition</h2>
+        </div>
+        <button onclick="closeWindow('window-singing')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-4 sm:px-5 py-2 rounded-full transition-all font-semibold text-sm sm:text-base">
+            Close <span class="hidden sm:inline">Window</span> <i class="ph-bold ph-x text-lg"></i>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+        <div class="max-w-5xl mx-auto space-y-10 pb-20">
+            
+            <div class="text-center space-y-3">
+                <p class="text-brand-gold font-semibold tracking-[0.2em] uppercase">Unleash Your Voice • Captivate the Audience • Become the Star</p>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Harness the power of the human voice to command the stage, turning every lyric and note into a profound emotional journey. Open to all UG and PG students.</p>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                    <i class="ph-fill ph-music-notes text-brand-gold"></i> Performance Categories
+                </h3>
+                
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-3xl hover:border-brand-gold/50 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-brand-gold-light font-bold text-2xl">Solo Singing</h4>
+                            <span class="bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-full text-xs font-bold">₹300 EACH</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6">Showcase your individual vocal prowess across any genre—Classical, Semi-Classical, Bollywood, or Folk.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="ph ph-clock text-brand-gold"></i> Eliminations: 2 Mins</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="ph ph-microphone text-brand-gold"></i> Finals: 5 Mins</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-3xl hover:border-brand-gold/50 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-brand-gold-light font-bold text-2xl">Group Singing</h4>
+                            <span class="bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-full text-xs font-bold">₹600 / TEAM</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6">Harmonize and synchronize. Maximum of 4 members per team allowed to compete for the trophy.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="ph ph-users text-brand-gold"></i> Max 4 Members</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="ph ph-megaphone text-brand-gold"></i> Warning bell at 1 min remaining</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                        <i class="ph-fill ph-calendar text-brand-gold"></i> Event Structure
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="glass-card p-6 rounded-2xl border border-white/5">
+                            <h5 class="text-brand-gold font-bold mb-2 uppercase text-xs tracking-widest">Day 1: Elimination Round</h5>
+                            <p class="text-sm text-gray-400">All registered participants compete. Judging panel will shortlist top performers for the grand finale based on technical scores.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl border border-brand-gold/30 bg-brand-gold/5">
+                            <h5 class="text-brand-gold-light font-bold mb-2 uppercase text-xs tracking-widest">Day 2: Final Round</h5>
+                            <p class="text-sm text-gray-300">Shortlisted finalists perform for 5 minutes. 1st, 2nd, and 3rd positions will be determined here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                        <i class="ph-fill ph-scroll text-brand-gold"></i> Performance Rules
+                    </h3>
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li class="flex items-start gap-3"><i class="ph ph-check-circle text-brand-gold mt-1"></i> Music tracks must be provided in a <b>Pen Drive</b> before the event starts.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check-circle text-brand-gold mt-1"></i> <b>Live Instruments</b> are allowed on stage.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check-circle text-brand-gold mt-1"></i> Reporting time: 30 minutes prior to the event start.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check-circle text-brand-gold mt-1"></i> Offensive language or inappropriate content will lead to instant disqualification.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check-circle text-brand-gold mt-1"></i> Carry valid College ID card and wear uniform.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-brand-gold/30 p-8 rounded-3xl text-center">
+                <h3 class="text-2xl font-bold text-white mb-4">🏆 Awards & Recognition</h3>
+                <p class="text-gray-400 text-sm mb-6">Cash prizes and mementos will be awarded to the top 3 winners. Participation certificates for all attendees.</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest">Vocal Range</span>
+                    <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest">Rhythm & Tempo</span>
+                    <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest">Stage Presence</span>
+                    <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest">Diction</span>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
+
+    <div id="window-dance" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-person-simple-dance text-3xl text-brand-gold"></i>
+                <h2 class="text-xl sm:text-2xl font-display font-bold text-white tracking-widest uppercase">Dance Competition</h2>
+            </div>
+            <button onclick="closeWindow('window-dance')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-4 sm:px-5 py-2 rounded-full transition-all font-semibold text-sm sm:text-base">
+                Close <span class="hidden sm:inline">Window</span> <i class="ph-bold ph-x text-lg"></i>
+            </button>
+        </div>
+        
+        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+            <div class="max-w-5xl mx-auto space-y-10 pb-20">
+                
+                <div class="text-center space-y-3">
+                    <p class="text-brand-gold font-semibold tracking-[0.2em] uppercase">Feel the Beat • Own the Stage • Express the Rhythm</p>
+                    <p class="text-gray-300 text-lg max-w-2xl mx-auto">Get ready to showcase your talent and passion for dance! Join us for an exciting Inter-College Dance Festival featuring multiple categories and amazing prizes.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                        <i class="ph-fill ph-star text-brand-gold"></i> Dance Categories
+                    </h3>
+                    
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-4">A) Solo Dance</h4>
+                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
+                                <li><strong class="text-gray-200">Participants:</strong> 1 dancer</li>
+                                <li><strong class="text-gray-200">Styles:</strong> Classical, Bollywood, Western</li>
+                                <li><strong class="text-gray-200">Time Limit:</strong> 2 – 4 minutes</li>
+                            </ul>
+                            <div class="bg-gray-900/50 p-3 rounded-lg text-sm text-gray-300 border border-gray-800">
+                                <p class="text-brand-gold font-bold mb-1">🥇 1st Prize: ₹2000</p>
+                                <p>🥈 2nd & 🥉 3rd: Certificate + Trophy</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-4">B) Duet Dance</h4>
+                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
+                                <li><strong class="text-gray-200">Participants:</strong> 2 dancers</li>
+                                <li><strong class="text-gray-200">Styles:</strong> Any Dance Style</li>
+                                <li><strong class="text-gray-200">Time Limit:</strong> 3 – 4 minutes</li>
+                            </ul>
+                            <div class="bg-gray-900/50 p-3 rounded-lg text-sm text-gray-300 border border-gray-800">
+                                <p class="text-brand-gold font-bold mb-1">🥇 1st Prize: ₹2000</p>
+                                <p>🥈 2nd & 🥉 3rd: Certificate + Trophy</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-4">C) Group Dance</h4>
+                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
+                                <li><strong class="text-gray-200">Participants:</strong> 4 – 10 dancers</li>
+                                <li><strong class="text-gray-200">Styles:</strong> Fusion, Bollywood, Folk, Western</li>
+                                <li><strong class="text-gray-200">Time Limit:</strong> 3 – 4 minutes</li>
+                            </ul>
+                            <div class="bg-gray-900/50 p-3 rounded-lg text-sm text-gray-300 border border-gray-800">
+                                <p class="text-brand-gold font-bold mb-1">🥇 1st Prize: ₹3000</p>
+                                <p>🥈 2nd & 🥉 3rd: Certificate + Trophy</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-4">D) Classical Dance</h4>
+                            <p class="text-sm text-gray-300 mb-2"><strong>Participants:</strong> 1 – 5 dancers</p>
+                            <p class="text-sm text-gray-400 mb-4"><strong>Styles Include:</strong> Bharatanatyam, Kathak, Odissi, Kuchipudi</p>
+                            <p class="text-xs text-brand-gold italic">🏆 Prize: Based on number of entries</p>
+                        </div>
+
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-4">E) Folk Dance</h4>
+                            <p class="text-sm text-gray-400 mb-4">Traditional regional dance styles such as: Lavani, Bhangra, Garba, Ghoomar</p>
+                            <p class="text-xs text-brand-gold italic">🏆 Prize: Based on number of entries</p>
+                        </div>
+
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+                            <h4 class="text-brand-gold-light font-bold text-xl mb-2">F) Western & G) Freestyle</h4>
+                            <p class="text-sm text-gray-400 mb-4">Popular styles including: Hip-Hop, Breakdance, Jazz, Contemporary, or creative fusion.</p>
+                            <p class="text-xs text-brand-gold italic">🏆 Prize: Based on number of entries</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                            <i class="ph-fill ph-wallet text-brand-gold"></i> Registration Fees
+                        </h3>
+                        <div class="overflow-hidden rounded-2xl border border-gray-800 bg-[#0a0a0a]">
+                            <table class="w-full text-left text-sm text-gray-300">
+                                <thead class="bg-gray-900/80 text-brand-gold font-semibold border-b border-gray-800">
+                                    <tr>
+                                        <th class="px-5 py-4">Category</th>
+                                        <th class="px-5 py-4">Fee</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800/50">
+                                    <tr><td class="px-5 py-3">Solo Dance</td><td class="px-5 py-3 font-mono text-white">₹200</td></tr>
+                                    <tr><td class="px-5 py-3">Duet Dance</td><td class="px-5 py-3 font-mono text-white">₹300</td></tr>
+                                    <tr><td class="px-5 py-3">Group Dance</td><td class="px-5 py-3 font-mono text-white">₹600</td></tr>
+                                    <tr><td class="px-5 py-3">Classical / Folk / Western</td><td class="px-5 py-3 text-gray-400">₹150 per person <br><span class="text-xs">(Group ₹100 per person)</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-6 bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                            <h4 class="text-brand-gold font-bold mb-3">🎟 Audience Entry</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Inter-College Audience:</span> <strong class="text-white">₹500 / person</strong></div>
+                                <div class="flex justify-between pt-2"><span>Intra-College Audience:</span> <strong class="text-white">₹300 / person</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                            <i class="ph-fill ph-warning-circle text-brand-gold"></i> General Rules
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                                <h4 class="text-white font-bold mb-3">📝 Registration Rules</h4>
+                                <ul class="space-y-2 text-sm text-gray-400">
+                                    <li>1️⃣ Participants must bring their college ID card.</li>
+                                    <li>2️⃣ Each participant can take part in only one category.</li>
+                                    <li>3️⃣ Registration must be completed before the last date.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                                <h4 class="text-white font-bold mb-3">🎵 Performance Rules</h4>
+                                <ul class="space-y-2 text-sm text-gray-400">
+                                    <li>1️⃣ Music track must be submitted before the event in MP3 format.</li>
+                                    <li>2️⃣ Performances must follow the time limit.</li>
+                                    <li>3️⃣ Obscene or inappropriate content is strictly prohibited.</li>
+                                    <li>4️⃣ Props are allowed but dangerous or fire items are not permitted.</li>
+                                    <li>5️⃣ Violation of rules may lead to disqualification.</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                                <h4 class="text-white font-bold mb-3">👯 Group Dance Specifics</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-sm text-gray-400">
+                                    <li>Minimum 4 members, maximum 10 members.</li>
+                                    <li>Teams must be ready 15 minutes before their performance.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-brand-gold/30 p-8 rounded-3xl text-center">
+                    <h3 class="text-2xl font-bold text-white mb-6">🏆 Judging Criteria</h3>
+                    <p class="text-gray-400 text-sm mb-6">Judges will evaluate based on the following parameters:</p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Dance Technique</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Synchronization</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Creativity</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Expressions</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Stage Presence</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Costume</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-4 py-2 rounded-full text-sm font-semibold tracking-wide">✨ Props</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Page Start Here -->
 
     <section id="schedule" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -659,79 +1308,6 @@
         </div>
     </section>
 
-    <section id="register" class="py-24 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="glass-card rounded-[2rem] border border-brand-gold/30 p-8 sm:p-12 shadow-[0_0_50px_rgba(212,175,55,0.15)]">
-                <div class="text-center mb-10 space-y-3">
-                    <i class="ph-fill ph-ticket text-5xl text-brand-gold-light"></i>
-                    <h3 class="text-4xl font-display font-bold text-white">Secure Your Pass</h3>
-                    <p class="text-gray-400 text-sm max-w-lg mx-auto">Fill out the form below to register for Nova Stellar 2026. Early birds get exclusive merch at the venue.</p>
-                </div>
-
-                <!-- <form class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors placeholder-gray-700" required>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Email Address</label>
-                            <input type="email" placeholder="john@example.com" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors placeholder-gray-700" required>
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">College Name</label>
-                            <input type="text" placeholder="Enter your college" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors placeholder-gray-700" required>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Phone Number</label>
-                            <input type="tel" placeholder="+91 98765 43210" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors placeholder-gray-700" required>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Pass Type</label>
-                        <div class="grid sm:grid-cols-3 gap-4">
-                            <label class="relative cursor-pointer">
-                                <input type="radio" name="pass_type" class="peer sr-only" checked>
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl peer-checked:border-brand-gold peer-checked:bg-brand-gold/10 peer-checked:ring-1 peer-checked:ring-brand-gold transition-all text-center hover:bg-gray-900">
-                                    <span class="block text-white font-bold mb-1">Standard</span>
-                                    <span class="text-xs text-gray-500">Access to all day events</span>
-                                </div>
-                            </label>
-                            <label class="relative cursor-pointer">
-                                <input type="radio" name="pass_type" class="peer sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl peer-checked:border-brand-gold-light peer-checked:bg-brand-gold/10 peer-checked:ring-1 peer-checked:ring-brand-gold-light transition-all text-center hover:bg-gray-900 relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 bg-brand-gold-light text-black text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">POPULAR</div>
-                                    <span class="block text-brand-gold-light font-bold mb-1">VIP Pro</span>
-                                    <span class="text-xs text-gray-400">Day events + Pro-Nite</span>
-                                </div>
-                            </label>
-                            <label class="relative cursor-pointer">
-                                <input type="radio" name="pass_type" class="peer sr-only">
-                                <div class="p-4 bg-[#000] border border-gray-800 rounded-xl peer-checked:border-brand-gold peer-checked:bg-brand-gold/10 peer-checked:ring-1 peer-checked:ring-brand-gold transition-all text-center hover:bg-gray-900">
-                                    <span class="block text-white font-bold mb-1">Participant</span>
-                                    <span class="text-xs text-gray-500">For competition entry</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-5 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4 group">
-                        Confirm Registration <i class="ph-bold ph-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                    </button>
-                    
-                    <p class="text-center text-xs text-gray-600 mt-4">
-                        By submitting, you agree to our <a href="#" class="text-brand-gold hover:text-brand-gold-light underline">Terms & Conditions</a>.
-                    </p>
-                </form> -->
-            </div>
-        </div>
-    </section>
-
     <footer class="bg-[#000] pt-16 pb-8 border-t border-brand-gold/20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -893,116 +1469,56 @@
         });
     </script>
     <script>
-          // --- 1. Event Data (What would normally be in your main.js) ---
-        const novaEventsData = {
-            'food': {
-                title: 'Food Fest',
-                desc: 'Experience a massive fete with a variety of delicious cuisines and exciting food stalls.',
-                icon: 'ph-bowl-food',
-                items: [
-                    { name: 'Book a Food Stall', details: 'Set up your own fete stall. Limited spots! (A-Ground Floor)', tag: 'Fete' },
-                    { name: 'Cooking Competition', details: 'Showcase your culinary skills with Fireless Cooking.', tag: 'Competition' },
-                    { name: 'Mocktail Making', details: 'Mix the best summer coolers.', tag: 'Competition' }
-                ]
-            },
-            'literary': {
-                title: 'Literary & Arts',
-                desc: 'Showcase your creativity through debates, sketching, painting, and competitive arts.',
-                icon: 'ph-books',
-                items: [
-                    { name: 'Debate Competition', details: 'Team of 2. Topic will be given 24h prior. (Seminar Hall)', tag: 'Team Event' },
-                    { name: 'Face Painting', details: 'Solo or Duo allowed. Bring your own supplies. (Room B 111)', tag: 'Art' },
-                    { name: 'Pencil Sketching', details: 'Theme-based sketching. 1 hour time limit. (Room B 112)', tag: 'Art' },
-                    { name: 'Poster Making', details: 'Digital and physical poster creation categories.', tag: 'Art' }
-                ]
-            },
-            'annual': {
-                title: 'Annual Day',
-                desc: 'The grand college opening performances featuring instrumental, singing, and group dances.',
-                icon: 'ph-users-three',
-                items: [
-                    { name: 'Group Dance', details: 'Minimum 4, maximum 15 members per group.', tag: 'Performance' },
-                    { name: 'Singing (Solo/Duet)', details: 'Classical, Western, or Bollywood categories.', tag: 'Performance' },
-                    { name: 'Instrumental', details: 'Solo instrumental performance. 5 minutes max.', tag: 'Performance' }
-                ]
-            },
-            'night': {
-                title: 'Night Events',
-                desc: 'The ultimate showcase: Live bands, vocal solos, and the highly anticipated Fashion Show.',
-                icon: 'ph-moon-stars',
-                items: [
-                    { name: 'Fashion Show Finale', details: 'Register as a model. Auditions required.', tag: 'Highlight' },
-                    { name: 'Live Band Battle', details: 'Register your band for the night showcase on the main stage.', tag: 'Music' },
-                    { name: 'DJ Night Entry', details: 'Secure VIP access to the closing DJ set.', tag: 'Passes' }
-                ]
+        function openWindow(windowId) {
+            const win = document.getElementById(windowId);
+            if (win) {
+                // Remove hidden and closing classes, add active animation
+                win.classList.remove('hidden', 'window-closing');
+                win.classList.add('window-active');
+                
+                // Disable background scrolling
+                document.body.style.overflow = 'hidden';
             }
-        };
+        }
 
-        // --- 2. Dynamic Panel Logic ---
-        function fetchEventData(categoryId) {
-            const data = novaEventsData[categoryId];
-            if (!data) return;
+        function closeWindow(windowId) {
+            const win = document.getElementById(windowId);
+            if (win) {
+                // Swap active class for closing animation class
+                win.classList.remove('window-active');
+                win.classList.add('window-closing');
+                
+                // Wait for the animation to finish (300ms) before actually hiding the div
+                setTimeout(() => {
+                    win.classList.add('hidden');
+                    win.classList.remove('window-closing');
+                }, 300); 
 
-            // Reset all buttons visual state
-            const allBtns = document.querySelectorAll('.event-category-btn > div');
-            allBtns.forEach(btn => btn.classList.remove('event-card-active'));
+                // Re-enable background scrolling
+                document.body.style.overflow = '';
+            }
+        }
+        // Tab switching logic for Literary Window
+        function switchLitTab(tabId) {
+            // 1. Hide all content sections
+            const allContents = document.querySelectorAll('.lit-content-section');
+            allContents.forEach(content => content.classList.add('hidden'));
 
-            // Highlight the clicked button
-            const clickedBtn = document.getElementById(`evt-btn-${categoryId}`).firstElementChild;
-            clickedBtn.classList.add('event-card-active');
+            // 2. Show target content
+            document.getElementById(`lit-content-${tabId}`).classList.remove('hidden');
 
-            // Populate the panel data
-            document.getElementById('panel-title').innerText = data.title;
-            document.getElementById('panel-desc').innerText = data.desc;
-            
-            // Update Icon
-            const iconElement = document.getElementById('panel-icon');
-            iconElement.className = `text-4xl text-brand-gold-light ph-duotone ${data.icon}`;
-
-            // Populate Event List Items
-            const listContainer = document.getElementById('panel-event-list');
-            listContainer.innerHTML = ''; // clear previous
-            
-            data.items.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'bg-[#000] border border-gray-800 p-5 rounded-xl hover:border-brand-gold/50 transition-colors group relative overflow-hidden';
-                li.innerHTML = `
-                    <div class="absolute top-0 right-0 bg-brand-gold/10 text-brand-gold text-[10px] font-bold px-3 py-1 rounded-bl-lg border-b border-l border-brand-gold/20 uppercase tracking-wider">${item.tag}</div>
-                    <div class="flex items-start gap-3 mt-2">
-                        <i class="ph-bold ph-check-circle text-brand-gold mt-0.5 group-hover:scale-110 transition-transform"></i>
-                        <div>
-                            <h5 class="text-white font-bold mb-1">${item.name}</h5>
-                            <p class="text-gray-400 text-sm leading-relaxed">${item.details}</p>
-                        </div>
-                    </div>
-                `;
-                listContainer.appendChild(li);
+            // 3. Reset all buttons to inactive state
+            const allBtns = document.querySelectorAll('.lit-tab-btn');
+            allBtns.forEach(btn => {
+                btn.classList.remove('border-brand-gold', 'bg-brand-gold/10', 'text-brand-gold-light', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+                btn.classList.add('border-gray-800', 'bg-[#0a0a0a]', 'text-gray-400');
             });
 
-            // Show the panel
-            const panel = document.getElementById('dynamic-events-panel');
-            panel.classList.remove('panel-hidden');
-            panel.classList.add('panel-visible');
-
-            // Smooth scroll down slightly to show the newly opened panel on mobile
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            }
+            // 4. Highlight clicked button
+            const activeBtn = document.getElementById(`lit-tab-${tabId}`);
+            activeBtn.classList.remove('border-gray-800', 'bg-[#0a0a0a]', 'text-gray-400');
+            activeBtn.classList.add('border-brand-gold', 'bg-brand-gold/10', 'text-brand-gold-light', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
         }
-
-        function closeEventPanel() {
-            // Hide the panel
-            const panel = document.getElementById('dynamic-events-panel');
-            panel.classList.remove('panel-visible');
-            panel.classList.add('panel-hidden');
-
-            // Remove highlight from all buttons
-            const allBtns = document.querySelectorAll('.event-category-btn > div');
-            allBtns.forEach(btn => btn.classList.remove('event-card-active'));
-        }
-
     </script>
 </body>
 </html>

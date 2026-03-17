@@ -200,7 +200,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const data = JSON.parse(sessionStorage.getItem("debateTeamData") || "{}");
             if (!data || !data.p1_name) {
-                window.location.href = "debate-registration.html"; 
+                window.location.href = "registration.html"; 
                 return;
             }
             document.getElementById("amountDisplay").textContent = data.amount_rupees || 500;
@@ -297,7 +297,7 @@
                 sessionStorage.removeItem("debateTeamData"); 
                 if (j.pdfUrl) { sessionStorage.setItem("receiptUrl", j.pdfUrl); }
                 
-                window.location.href = "debate-success.html";  
+                window.location.href = "success.html";  
 
             } catch(err){
                 console.error(err);

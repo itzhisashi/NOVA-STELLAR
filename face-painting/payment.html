@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Painting Payment | Nova Stellar 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#050505',
+                        'brand-card': '#0a0a0a',
+                        'brand-gold': '#d4af37',
+                        'brand-gold-light': '#f5d061',
+                        'brand-gold-dark': '#997a15',
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            user-select: none;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f5d061; }
+
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(214,177,58,0.2);
+        }
+        
+        .glass-card {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.35;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="bg-glow bg-brand-gold w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob opacity-20"></div>
+        <div class="bg-glow bg-brand-gold-light w-[400px] h-[400px] bottom-[10%] right-[-5%] animate-blob opacity-20" style="animation-delay: 2s;"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-lg leading-tight tracking-wider text-white uppercase">Payment Checkout</span>
+                </div>
+                <div class="flex flex-col text-right">
+                    <span class="font-display font-bold text-lg leading-tight tracking-wider text-white">NOVA STELLAR</span>
+                    <span class="text-[10px] text-brand-gold uppercase tracking-widest">Face Painting</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-24 relative flex items-center justify-center">
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            
+            <div class="glass-card rounded-[2rem] border border-brand-gold/30 p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)] text-center">
+                
+                <h1 class="text-3xl font-display font-bold text-white mb-2">Pay via UPI</h1>
+                <h3 class="text-xl text-gray-300 mb-6">
+                    Amount Due: <b class="text-brand-gold-light text-3xl ml-2">₹<span id="amountDisplay">199</span></b>
+                </h3>
+                <p class="text-gray-400 text-sm mb-8">Click the button below to open your UPI app and pay. After payment, enter the UPI Transaction ID (UTR/Reference) below and submit for verification.</p>
+
+                <div class="space-y-4 mb-10">
+                    <a id="upiButton" href="#" class="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all">
+                        <i class="ph-bold ph-device-mobile"></i> Pay via UPI App
+                    </a>
+                    
+                    <div class="flex items-center gap-4 py-2">
+                        <hr class="flex-grow border-gray-800">
+                        <span class="text-gray-500 text-sm font-medium uppercase tracking-widest">OR</span>
+                        <hr class="flex-grow border-gray-800">
+                    </div>
+
+                    <div id="qr" style="display:none;" class="mb-4">
+                        <img id="qr-img" alt="QR Code" class="mx-auto rounded-xl border-2 border-brand-gold/50 shadow-[0_0_20px_rgba(212,175,55,0.2)] w-48 h-48 object-cover"/>
+                    </div>
+                    
+                    <button id="qrLink" onclick="showQR()" class="w-full inline-flex justify-center items-center gap-2 bg-transparent border-2 border-brand-gold text-brand-gold-light font-bold text-lg py-3 rounded-xl hover:bg-brand-gold/10 transition-all">
+                        <i class="ph-bold ph-qr-code"></i> Show QR Code
+                    </button>
+                </div>
+
+                <div class="bg-[#000] border border-gray-800 rounded-2xl p-6 relative">
+                    <h3 class="text-white font-bold mb-4 text-left">Verify Payment</h3>
+                    <form id="verifyForm" class="space-y-4">
+                        <input type="text" name="utr" class="w-full bg-gray-900 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-center font-mono tracking-wider placeholder-gray-500" placeholder="Enter 12-Digit UTR / Ref No." required />
+                        
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide text-left block">Upload Payment Screenshot</label>
+                            <input type="file" id="screenshot" accept="image/*" class="w-full bg-gray-900 border border-gray-700 text-gray-400 rounded-xl px-4 py-3 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-brand-gold file:text-black hover:file:bg-brand-gold-light transition-all" required />
+                        </div>
+
+                        <button type="submit" class="w-full bg-white text-black font-bold text-md py-3 rounded-xl hover:bg-gray-200 transition-all flex justify-center items-center gap-2 mt-2">
+                            Complete Registration <i class="ph-bold ph-check-circle"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="flex flex-col items-center justify-center w-full">
+                        <div id="status" class="hidden mt-6 text-brand-gold text-sm font-medium animate-pulse text-center"></div>
+
+                        <div id="cat" class="hidden mt-6 flex justify-center items-center">
+                            <div class="relative w-14 h-14 flex items-center justify-center">
+                                <div class="absolute inset-0 rounded-full border-4 border-gray-800"></div>
+                                <div class="absolute inset-0 rounded-full border-4 border-transparent border-t-brand-gold-light border-r-brand-gold animate-spin shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+                                <div class="absolute inset-1.5 rounded-full border-2 border-transparent border-b-brand-gold border-l-brand-gold-dark opacity-70 animate-[spin_1.5s_linear_infinite_reverse]"></div>
+                                <div class="w-5 h-5 bg-gradient-to-tr from-brand-gold to-brand-gold-light rounded-full animate-pulse shadow-[0_0_15px_rgba(245,208,97,0.8)] flex items-center justify-center z-10">
+                                    <i class="ph-bold ph-shield-check text-black text-[10px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-brand-gold-dark/10 border border-brand-gold-dark/30 rounded-2xl p-6 shadow-sm">
+                <h4 class="text-brand-gold-light font-bold mb-3 flex items-center gap-2">
+                    <i class="ph-fill ph-warning-circle text-xl"></i> Important Notes
+                </h4>
+                <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
+                    <li>If the page is reloaded after payment, you do <b>not</b> need to pay again. Re-fill the form with your details and enter the Transaction ID / UTR to get your receipt.</li>
+                    <li>If you send a request to join the WhatsApp group, <b>your request will be approved only after your payment and UTR are successfully verified</b> by the core committee.</li>
+                </ol>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-[#000] py-6 border-t border-brand-gold/20 relative mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-sm mb-2">© 2026 Nova Stellar Core Committee. All rights reserved.</p>
+            <div class="text-xs font-medium text-gray-400">
+                Developed by <a href="https://im-ayu-sh.netlify.app/" target="_blank" class="text-brand-gold hover:text-brand-gold-light transition-colors underline decoration-brand-gold/30 underline-offset-4">Ayush Patil</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const UPI_ID = "ayushpatil311@okaxis"; 
+        const UPI_NAME = "Nova Stellar Face Painting";
+        const NOTE = "Face Painting Registration";
+        const CURRENCY = "INR";
+        
+        // REPLACE THIS WITH YOUR APPS SCRIPT URL!
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyU4DYOfDVxQ5y-Io91-1Wgxwd1P9FEvXNM6TP87ZSGmyoy1a-l7-UUPUIvEvItgRuOhw/exec";
+        
+        function buildUpiLink(vpa, name, amount, note) {
+            const params = new URLSearchParams({ pa: vpa, pn: name, am: String(amount), tn: note, cu: CURRENCY });
+            return "upi://pay?" + params.toString();
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = JSON.parse(sessionStorage.getItem("facePaintingData") || "{}");
+            if (!data || !data.name) {
+                window.location.href = "registration.html"; 
+                return;
+            }
+            document.getElementById("amountDisplay").textContent = data.amount_rupees || 199;
+            document.getElementById("upiButton").href = buildUpiLink(UPI_ID, UPI_NAME, data.amount_rupees || 199, NOTE);
+        });
+
+        function showQR() {
+            document.getElementById("qr-img").src = "assets/img/qrcode.jpg"; // Update to your QR code file
+            document.getElementById("qr").style.display = 'block';
+            document.getElementById("qrLink").style.display = 'none';
+        }
+
+        // ULTRA-COMPRESSION FUNCTION FOR GOOGLE SHEETS
+        function compressAndGetBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 500; 
+                        const scaleSize = MAX_WIDTH / img.width;
+                        
+                        let newWidth = MAX_WIDTH;
+                        let newHeight = img.height * scaleSize;
+                        
+                        if (img.width < MAX_WIDTH) {
+                            newWidth = img.width;
+                            newHeight = img.height;
+                        }
+
+                        canvas.width = newWidth;
+                        canvas.height = newHeight;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5);
+                        
+                        resolve({
+                            base64: compressedDataUrl.split(',')[1],
+                            mimeType: 'image/jpeg' 
+                        });
+                    };
+                    img.onerror = (error) => reject(error);
+                };
+                reader.onerror = (error) => reject(error);
+            });
+        }
+
+        // Form Submission
+        document.getElementById("verifyForm").addEventListener("submit", async function(e){
+            e.preventDefault();
+            const utr = this.utr.value.trim();
+            const fileInput = document.getElementById('screenshot').files[0];
+            
+            if(!utr || !fileInput) { 
+                alert("Please enter UTR and upload a screenshot."); return; 
+            }
+
+            const data = JSON.parse(sessionStorage.getItem("facePaintingData") || "{}");
+            data.utr = utr;
+
+            const status = document.getElementById("status");
+            const cat = document.getElementById("cat");
+            
+            cat.style.display = "flex"; 
+            status.style.display = "block";
+            status.textContent = "Verifying Payment & Compressing Image...";
+
+            this.querySelector('button').disabled = true;
+            this.querySelector('button').classList.add('opacity-50', 'cursor-not-allowed');
+
+            try {
+                const imgData = await compressAndGetBase64(fileInput);
+                data.screenshotBase64 = imgData.base64;
+                data.screenshotMimeType = imgData.mimeType;
+
+                status.textContent = "Securing entry pass...";
+
+                const resp = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    redirect: "follow",
+                    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+                    body: JSON.stringify(data)
+                });
+                
+                const j = await resp.json();
+                if(j.status === "error") throw new Error(j.message || "Script Error");
+
+                sessionStorage.removeItem("facePaintingData"); 
+                if (j.pdfUrl) { sessionStorage.setItem("receiptUrl", j.pdfUrl); }
+                
+                window.location.href = "success.html";  
+
+            } catch(err){
+                console.error(err);
+                status.textContent = "Error: " + err.message + ". Check your connection.";
+                cat.style.display = "none";
+                this.querySelector('button').disabled = false;
+                this.querySelector('button').classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+</html>

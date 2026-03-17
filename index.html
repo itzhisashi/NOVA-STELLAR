@@ -483,7 +483,7 @@
         </div>
     </div>
 
-    <div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+   <div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
     <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
         <div class="flex items-center gap-3">
             <i class="ph-duotone ph-microphone-stage text-3xl text-brand-gold"></i>
@@ -503,6 +503,15 @@
                     "Engage in a battle of wits and words, where sharp logic meets persuasive oratory to conquer the floor."
                 </p>
             </div>
+
+            <!-- Download brochure button -->
+             <div class="mt-8">
+                 <a href="https://drive.google.com/uc?export=download&id=14MyF-f724MuNyUYbUVoYuEstnb1o07NV" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                     <i class="ph-bold ph-download-simple text-xl transition-transform items-center mt-1"></i>
+                     Download Official Brochure
+                 </a>
+                 <p class="text-center text-gray-500 text-xs mt-3">PDF Format • Contains detailed rules</p>
+             </div>
 
             <div class="bg-gradient-to-r from-[#0a0a0a] to-[#1a1a1a] border-y border-brand-gold/30 p-8 rounded-2xl shadow-[0_0_30px_rgba(212,175,55,0.1)] text-center">
                 <span class="text-brand-gold text-xs font-bold uppercase tracking-[0.3em]">Official Motion</span>
@@ -534,6 +543,17 @@
                 </div>
             </div>
 
+            <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-6">
+                <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                    <i class="ph-bold ph-map-pin"></i> Event Details
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+                     <p><strong class="text-white">Date:</strong> 10th April, 2026</p>
+                     <p><strong class="text-white">Time:</strong> 10 AM to 2 PM</p>
+                     <p><strong class="text-white">Venue:</strong> College Auditorium, St. Francis De Sales College, Seminary Hills, Nagpur</p>
+                </div>
+            </div>
+
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-6">
                     <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
@@ -542,11 +562,11 @@
                     <div class="space-y-4">
                         <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
                             <p class="text-white font-bold">Round 1: Preliminary</p>
-                            <p class="text-gray-400 text-sm">Each team member gets <span class="text-brand-gold-light">3 minutes</span> to present their specific argument (1 For, 1 Against).</p>
+                            <p class="text-gray-400 text-sm">Each participant gets <span class="text-brand-gold-light">3 minutes</span> to present their argument. Teams will be shortlisted based on performance.</p>
                         </div>
                         <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
-                            <p class="text-white font-bold">Round 2: Finals</p>
-                            <p class="text-gray-400 text-sm">The floor will open for <span class="text-brand-gold-light">rebuttals</span> and cross-questioning moderated by the judge.</p>
+                            <p class="text-white font-bold">Round 2: Final Round (Rebuttal)</p>
+                            <p class="text-gray-400 text-sm">Focuses on rebuttals and interactive discussion. Total time: <span class="text-brand-gold-light">40-50 minutes</span>. Participants may challenge arguments and ask questions.</p>
                         </div>
                     </div>
                 </div>
@@ -556,19 +576,68 @@
                         <i class="ph-bold ph-scales"></i> Participation Rules
                     </h3>
                     <ul class="space-y-3 text-sm text-gray-300">
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Preparedness for both 'For' and 'Against' arguments is mandatory.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Participants must wear College Uniform and carry their ID Card.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> One team per college is permitted.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Judge's decision is final and binding.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> 1 college = 1 team (2 students). One must argue FOR, the other AGAINST the motion.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Participants must wear their college uniform and carry their college ID card.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Respectful and constructive discussion is mandatory during rebuttals.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> The decision of the judges and moderator is final and binding.</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="bg-red-500/5 border border-red-500/20 p-4 rounded-xl text-center">
-                <p class="text-red-400 text-xs font-bold uppercase tracking-widest">
-                    <i class="ph-fill ph-info"></i> Submissions of fees and forms must be done at the registration desk on the day of the event.
-                </p>
-            </div>
+            <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-6">
+                 <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                     <i class="ph-bold ph-clipboard-text"></i> Judgement Criteria
+                 </h3>
+                 <div class="grid md:grid-cols-2 gap-8">
+                     <div>
+                         <h4 class="text-white font-semibold mb-3">Round 1 (Total: 100 Marks)</h4>
+                         <ul class="space-y-2 text-sm text-gray-400">
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Content & Knowledge</span> <span class="text-brand-gold">20</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Organization & Structure</span> <span class="text-brand-gold">20</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Delivery & Presentation</span> <span class="text-brand-gold">20</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Language & Expression</span> <span class="text-brand-gold">20</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Originality and Creativity</span> <span class="text-brand-gold">20</span></li>
+                         </ul>
+                     </div>
+                      <div>
+                         <h4 class="text-white font-semibold mb-3">Round 2 (Total: 50 Marks)</h4>
+                         <ul class="space-y-2 text-sm text-gray-400">
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Listening & Comprehension</span> <span class="text-brand-gold">10</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Rebuttal & Critical Thinking</span> <span class="text-brand-gold">10</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Quick Thinking & Spontaneity</span> <span class="text-brand-gold">10</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Clarity of Expression</span> <span class="text-brand-gold">10</span></li>
+                             <li class="flex justify-between border-b border-gray-800 pb-1"><span>Confidence & Delivery</span> <span class="text-brand-gold">10</span></li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-4">
+                     <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                        <i class="ph-bold ph-trophy"></i> Prizes
+                     </h3>
+                     <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-medal text-yellow-400 mt-1"></i> <strong>Winner:</strong> Shield + Certificate + Cash Prize</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-medal text-gray-400 mt-1"></i> <strong>1st Runner-up:</strong> Shield + Certificate + Cash Prize</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-medal text-orange-400 mt-1"></i> <strong>2nd Runner-up:</strong> Shield + Certificate + Cash Prize</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-certificate text-brand-gold mt-1"></i> Participation certificates for all.</li>
+                     </ul>
+                </div>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-4">
+                     <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
+                        <i class="ph-bold ph-phone"></i> Coordinators
+                     </h3>
+                     <div class="space-y-3 text-sm text-gray-300">
+                         <p class="font-semibold text-white">Teacher Coordinators:</p>
+                         <p>Mrs. Soma Banerjee: <a href="tel:+919158022775" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 91580 22775</a></p>
+                         <p>Mrs. Baljeet Mudliyar: <a href="tel:+919987044521" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 99870 44521</a></p>
+                         <p class="font-semibold text-white mt-4">Student Coordinators:</p>
+                         <p>Ms. Anushka Lokhande: <a href="tel:+918055854191" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 8055854191</a></p>
+                         <p>Ms. Shuchita Sahu: <a href="tel:+917558526492" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 7558526492</a></p>
+                     </div>
+                </div>
+             </div>
 
         </div>
     </div>

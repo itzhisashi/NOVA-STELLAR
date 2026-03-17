@@ -223,7 +223,7 @@
                     img.src = event.target.result;
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        const MAX_WIDTH = 500; // Aggressive resize for UTR legibility
+                        const MAX_WIDTH = 800; // Aggressive resize for UTR legibility
                         const scaleSize = MAX_WIDTH / img.width;
                         
                         let newWidth = MAX_WIDTH;

@@ -341,7 +341,7 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                 
-                <button onclick="openWindow('window-food')" class="text-left block group outline-none w-full">
+                <button onclick="openWindow('window-masti-fest')" class="text-left block group outline-none w-full">
                     <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
                         <i class="ph-duotone ph-bowl-food text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
@@ -459,29 +459,189 @@
         </div>
     </section>
 
-    <div id="window-food" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
-        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
-            <div class="flex items-center gap-3">
-                <i class="ph-duotone ph-bowl-food text-3xl text-brand-gold"></i>
-                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Food Fest</h2>
-            </div>
-            <button onclick="closeWindow('window-food')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
-                Close Window <i class="ph-bold ph-x text-lg"></i>
-            </button>
+    <div id="window-masti-fest" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+    <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+        <div class="flex items-center gap-3">
+            <i class="ph-duotone ph-tent text-3xl text-brand-gold"></i>
+            <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Hungama Hub</h2>
         </div>
-        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
-            <div class="max-w-4xl mx-auto space-y-8">
-                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
-                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
-                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
-                    </ul>
+        <button onclick="closeWindow('window-masti-fest')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+            Close Window <i class="ph-bold ph-x text-lg"></i>
+        </button>
+    </div>
+    
+    <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+        <div class="max-w-5xl mx-auto space-y-10 pb-10">
+            
+            <div class="text-center space-y-4">
+                <h4 class="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs">St. Francis de Sales College, Nagpur Presents</h4>
+                <h3 class="text-4xl sm:text-5xl font-display font-bold text-white">The Grand Masti <span class="text-brand-gold">Fest 2026</span></h3>
+                <p class="text-gray-300 text-lg max-w-3xl mx-auto italic">"Get ready for a day full of fun, food, games, and shopping. We warmly invite all students and visitors to join where entertainment, creativity, and enjoyment come together!"</p>
+            </div>
+
+            <!-- Download brochure button -->
+             <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-calendar-blank text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Date</p>
+                    <p class="text-white font-bold text-lg">10th April 2026</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-clock text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Time</p>
+                    <p class="text-white font-bold text-lg">10:30 AM – 3:00 PM</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-map-pin text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Venue</p>
+                    <p class="text-white font-bold text-lg">SFS College Campus</p>
                 </div>
             </div>
+
+            <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                <h3 class="text-brand-gold text-xl font-bold mb-6 text-center flex justify-center items-center gap-2"><i class="ph-bold ph-ticket"></i> Entry Fees</h3>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-black border border-brand-gold/20 p-6 rounded-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-brand-gold text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Internal</div>
+                        <p class="text-gray-400 font-semibold mb-1">SFS College Students</p>
+                        <h4 class="text-4xl font-display font-bold text-white">₹250</h4>
+                    </div>
+                    <div class="bg-black border border-brand-gold/20 p-6 rounded-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-white text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">External</div>
+                        <p class="text-gray-400 font-semibold mb-1">Visitors / Outsiders</p>
+                        <h4 class="text-4xl font-display font-bold text-white">₹500</h4>
+                    </div>
+                </div>
+                <p class="text-center text-red-400 text-sm mt-4 font-medium"><i class="ph-fill ph-warning-circle"></i> Entry passes must be collected in advance.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <div class="space-y-6">
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl h-full">
+                        <h3 class="text-brand-gold text-xl font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-star"></i> Main Attractions</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/5 p-3 rounded-lg border border-white/10"><i class="ph-duotone ph-bowl-food text-2xl text-brand-gold"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg">Khaana Khazana <span class="text-gray-500 text-sm font-normal">(Food Zone)</span></h4>
+                                    <p class="text-gray-400 text-sm">Enjoy a variety of delicious food stalls prepared by students.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/5 p-3 rounded-lg border border-white/10"><i class="ph-duotone ph-game-controller text-2xl text-brand-gold"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg">Khel Bazar <span class="text-gray-500 text-sm font-normal">(Game Zone)</span></h4>
+                                    <p class="text-gray-400 text-sm">Fun and exciting games with prizes to win.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/5 p-3 rounded-lg border border-white/10"><i class="ph-duotone ph-shopping-bag text-2xl text-brand-gold"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg">Meena Bazar <span class="text-gray-500 text-sm font-normal">(Shopping Zone)</span></h4>
+                                    <p class="text-gray-400 text-sm">Explore creative stalls, handmade items, accessories and much more.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/5 p-3 rounded-lg border border-white/10"><i class="ph-duotone ph-mask-happy text-2xl text-brand-gold"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg">Entertainment & Fun</h4>
+                                    <p class="text-gray-400 text-sm">Music, fun challenges and interactive activities throughout the event.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/5 p-3 rounded-lg border border-white/10"><i class="ph-duotone ph-trophy text-2xl text-brand-gold"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg">Jeet Ka Jashn</h4>
+                                    <p class="text-gray-400 text-sm">Winners of games and competitions will receive exciting rewards and recognition.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-brand-gold/40 p-8 rounded-2xl h-full shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+                        <h3 class="text-brand-gold-light text-xl font-bold mb-2 flex items-center gap-2"><i class="ph-bold ph-lightbulb"></i> Learning & Skill Development</h3>
+                        <p class="text-gray-400 text-sm mb-6">Participating in this Grand Masti Fest will also help students develop important business & communication skills such as:</p>
+                        
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-trend-up text-brand-gold mt-0.5"></i> <div><strong class="text-white">Business & Entrepreneurial:</strong> Learn how to plan, manage and run a stall.</div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-chats text-brand-gold mt-0.5"></i> <div><strong class="text-white">Customer Interaction:</strong> Understand how to communicate and attract customers.</div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-handshake text-brand-gold mt-0.5"></i> <div><strong class="text-white">Customer Handling:</strong> Learn how to deal with different types of customers politely.</div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-chart-line-up text-brand-gold mt-0.5"></i> <div><strong class="text-white">Managing Demand:</strong> Understand how to manage sales and customer needs efficiently.</div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-megaphone text-brand-gold mt-0.5"></i> <div><strong class="text-white">Marketing & Sales:</strong> Learn creative ways to promote and sell products or food items.</div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-users-three text-brand-gold mt-0.5"></i> <div><strong class="text-white">Teamwork & Management:</strong> Work together as a team to successfully manage your stall.</div></li>
+                        </ul>
+                        
+                        <div class="mt-6 p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-xl text-center">
+                            <p class="text-brand-gold-light text-sm font-semibold italic">This event will give students a real-life experience of running a small business in a fun and practical environment!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                <h3 class="text-brand-gold text-xl font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-list-checks"></i> Rules & Regulations</h3>
+                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-400">
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">1.</span> <p>All participants and visitors must maintain discipline and follow college guidelines.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">2.</span> <p>Entry fee must be paid before entering the event area.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">3.</span> <p>Students must carry their valid college ID cards.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">4.</span> <p>Any damage to college property will lead to strict action.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">5.</span> <p>Outside food or beverages are not allowed inside the mela area.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">6.</span> <p>Participants managing stalls must keep their area clean and organized.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">7.</span> <p>Games and activities must be conducted fairly without any misconduct.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">8.</span> <p>The decision of the organizing committee will be final in all matters.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">9.</span> <p>All stalls must start and close according to the official timing of the event.</p></div>
+                    <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">10.</span> <p>Everyone is expected to maintain a friendly and enjoyable environment throughout the mela.</p></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl md:col-span-1">
+                    <h3 class="text-brand-gold text-lg font-bold mb-4 flex items-center gap-2"><i class="ph-bold ph-sparkle"></i> Why Attend?</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>✨ Delicious food stalls</li>
+                        <li>🎮 Fun games and challenges</li>
+                        <li>🛍️ Unique shopping stalls</li>
+                        <li>🎉 Exciting prizes and surprises</li>
+                        <li>🤝 A perfect day to enjoy with friends</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl md:col-span-2 flex flex-col justify-center">
+                    <h3 class="text-brand-gold text-lg font-bold mb-4 flex items-center gap-2"><i class="ph-bold ph-phone-call"></i> For Queries & Assistance</h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Teacher Coordinators</h4>
+                            <p class="text-gray-400 text-sm">Dr. Purabi Bhattacharyya - <a href="tel:9823026465" class="text-brand-gold hover:text-brand-gold-light transition-colors">9823026465</a></p>
+                            <p class="text-gray-400 text-sm">Mr. Shubham Singh - <a href="tel:8329897183" class="text-brand-gold hover:text-brand-gold-light transition-colors">8329897183</a></p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Student Coordinators</h4>
+                            <p class="text-gray-400 text-sm">Krish Patra - <a href="tel:9022417829" class="text-brand-gold hover:text-brand-gold-light transition-colors">9022417829</a></p>
+                            <p class="text-gray-400 text-sm">Aarya Yadav - <a href="tel:8262853848" class="text-brand-gold hover:text-brand-gold-light transition-colors">8262853848</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center space-y-1 pt-4">
+                <p class="text-brand-gold-light font-display font-bold text-xl uppercase tracking-widest">Where Fun Meets Learning!</p>
+                <p class="text-gray-400 font-medium tracking-wider">Where Fun Never Ends!</p>
+            </div>
+
         </div>
     </div>
+</div>
 
    <div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
     <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
@@ -505,13 +665,12 @@
             </div>
 
             <!-- Download brochure button -->
-             <div class="mt-8">
-                 <a href="https://drive.google.com/uc?export=download&id=14MyF-f724MuNyUYbUVoYuEstnb1o07NV" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
-                     <i class="ph-bold ph-download-simple text-xl transition-transform items-center mt-1"></i>
-                     Download Official Brochure
-                 </a>
-                 <p class="text-center text-gray-500 text-xs mt-3">PDF Format • Contains detailed rules</p>
-             </div>
+             <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
+            </div>
 
             <div class="bg-gradient-to-r from-[#0a0a0a] to-[#1a1a1a] border-y border-brand-gold/30 p-8 rounded-2xl shadow-[0_0_30px_rgba(212,175,55,0.1)] text-center">
                 <span class="text-brand-gold text-xs font-bold uppercase tracking-[0.3em]">Official Motion</span>
@@ -821,13 +980,12 @@
             </div>
 
             <!-- Brochure -->
-             <div class="mt-8">
-                 <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
-                     <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
-                     Download Official Brochure
-                 </a>
-                 <p class="text-center text-gray-500 text-xs mt-3">PDF Format • Contains detailed rules</p>
-             </div>
+            <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
+            </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5">
@@ -1479,7 +1637,7 @@
                     </div>
                     
                     <div class="space-y-6 pl-4 sm:pl-8 border-l-2 border-brand-gold/20 ml-4">
-                        <div class="relative group cursor-default">
+                        <!-- <div class="relative group cursor-default">
                             <div class="absolute -left-[21px] sm:-left-[37px] top-1 w-4 h-4 rounded-full bg-gray-800 ring-4 ring-[#000] group-hover:bg-brand-gold transition-colors"></div>
                             <div class="glass-card p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-2">
@@ -1488,7 +1646,7 @@
                                 </div>
                                 <p class="text-gray-400 text-sm">College Ground • Opening performances including Instrumental, Singing, and Dance.</p>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="relative group cursor-default">
                             <div class="absolute -left-[21px] sm:-left-[37px] top-1 w-4 h-4 rounded-full bg-gray-800 ring-4 ring-[#000] group-hover:bg-brand-gold transition-colors"></div>
@@ -1717,7 +1875,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                 <div class="md:col-span-2 space-y-4">
-                    <h2 class="text-3xl font-display font-black text-white tracking-tighter text-glow-gold">NOVA <span class="text-brand-gold">STELLAR</span> 2026</h2>
+                    <h2 class="text-3xl font-display font-black text-white tracking-tighter text-glow-gold">NOVA STELLAR 2026</h2>
                     <p class="text-gray-400 text-sm max-w-sm">
                         St. Francis De Sales College's premier annual cultural and technical festival. Unleashing the stars within you since inception.
                     </p>

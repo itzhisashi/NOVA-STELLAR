@@ -168,6 +168,51 @@
             animation: windowExit 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        /* Soothing Highlight Effect */
+.highlight-glow {
+    position: relative;
+    overflow: hidden;
+    /* Soft breathing border and outer glow */
+    animation: breathing-glow 3s infinite alternate ease-in-out;
+}
+
+/* The sweeping light beam */
+.highlight-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(245, 208, 97, 0.25), /* Soft brand gold */
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: sweeping-light 5s infinite;
+}
+
+/* Keyframes for the glowing border */
+@keyframes breathing-glow {
+    0% {
+        box-shadow: 0 0 0px rgba(212, 175, 55, 0);
+        border-color: rgba(212, 175, 55, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.1);
+        border-color: rgba(245, 208, 97, 0.8);
+    }
+}
+
+/* Keyframes for the sweeping light */
+@keyframes sweeping-light {
+    0% { left: -150%; }
+    40% { left: 250%; } /* Light moves smoothly across */
+    100% { left: 250%; } /* Pauses for 3 seconds so it isn't distracting */
+}
+
     </style>
 </head>
 <body class="relative antialiased selection:bg-brand-gold selection:text-black">
@@ -240,9 +285,16 @@
 
     <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 mt-8">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 glass-card mb-8 animate-float">
+            <!-- <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 glass-card mb-8 animate-float">
                 <span class="w-2 h-2 rounded-full bg-brand-gold-light animate-pulse"></span>
                 <span class="text-xs sm:text-sm text-brand-gold-light uppercase tracking-widest">Seminary Hills, Nagpur • 10-11 April 2026</span>
+            </div> -->
+            <div class="highlight-glow inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-gold/30 mb-8 animate-float">
+                <span class="w-2 h-2 rounded-full bg-brand-gold-light animate-pulse shadow-[0_0_8px_#f5d061]"></span>
+                
+                <span class="text-xs sm:text-sm text-brand-gold-light uppercase tracking-widest font-semibold z-10">
+                    Seminary Hills, Nagpur • 10-11 April 2026
+                </span>
             </div>
             <h2 class="text-xl sm:text-2xl md:text-3xl font-light text-brand-gold tracking-widest mb-8 font-display">ST. FRANCIS DE SALES COLLEGE PRESENTS</h2>
             <h1 class="text-6xl sm:text-8xl md:text-[10rem] font-black tracking-tighter leading-none font-display mb-4 relative text-liquid-wave">NOVA <br class="md:hidden p-4" />STELLAR</h1>
@@ -345,7 +397,7 @@
                     <div class="glass-card p-8 rounded-3xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] group-hover:border-brand-gold/50 relative overflow-hidden h-full">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
                         <i class="ph-duotone ph-bowl-food text-5xl text-brand-gold-light mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-                        <h4 class="text-2xl font-bold text-white mb-3">Food Fest</h4>
+                        <h4 class="text-2xl font-bold text-white mb-3">Grand Masti Fest</h4>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
                         <span class="inline-flex items-center text-brand-gold font-semibold text-sm group-hover:text-brand-gold-light transition-colors">
                             View Details <i class="ph-bold ph-arrow-right ml-2"></i>
@@ -622,8 +674,8 @@
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div>
                             <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Teacher Coordinators</h4>
-                            <p class="text-gray-400 text-sm">Dr. Purabi Bhattacharyya - <a href="tel:9823026465" class="text-brand-gold hover:text-brand-gold-light transition-colors">9823026465</a></p>
                             <p class="text-gray-400 text-sm">Mr. Shubham Singh - <a href="tel:8329897183" class="text-brand-gold hover:text-brand-gold-light transition-colors">8329897183</a></p>
+                            <p class="text-gray-400 text-sm">Dr. Purabi Bhattacharyya - <a href="tel:9823026465" class="text-brand-gold hover:text-brand-gold-light transition-colors">9823026465</a></p>
                         </div>
                         <div>
                             <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Student Coordinators</h4>

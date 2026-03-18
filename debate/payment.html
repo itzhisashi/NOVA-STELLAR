@@ -40,78 +40,43 @@
             }
         }
     </script>
-
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <style>
-        body {
-            background-color: #000000;
-            color: #f3f4f6;
-            overflow-x: hidden;
-            user-select: none;
-        }
-        
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #f5d061; }
-
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(214,177,58,0.2);
-        }
-        
-        .glass-card {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .bg-glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: -1;
-            opacity: 0.35;
-        }
+        body { background-color: #000000; color: #f3f4f6; overflow-x: hidden; user-select: none; }
+        .glass-nav, .glass-card { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.15); }
+        .bg-glow { position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.35; }
     </style>
 </head>
 <body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col">
 
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
         <div class="bg-glow bg-brand-gold w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob opacity-20"></div>
-        <div class="bg-glow bg-brand-gold-light w-[400px] h-[400px] bottom-[10%] right-[-5%] animate-blob opacity-20" style="animation-delay: 2s;"></div>
     </div>
 
-    <nav class="fixed w-full z-50 glass-nav py-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-                <div class="flex flex-col">
-                    <span class="font-display font-bold text-lg leading-tight tracking-wider text-white uppercase">Team Payment</span>
-                </div>
-                <div class="flex flex-col text-right">
-                    <span class="font-display font-bold text-lg leading-tight tracking-wider text-white">NOVA STELLAR</span>
-                    <span class="text-[10px] text-brand-gold uppercase tracking-widest">Debate Competition</span>
-                </div>
+    <nav class="fixed w-full z-50 glass-nav py-4 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <span class="font-display font-bold text-lg text-white uppercase">Payment Checkout</span>
+            <div class="flex flex-col text-right">
+                <span class="font-display font-bold text-lg leading-tight tracking-wider text-white">NOVA STELLAR</span>
+                <span class="text-[10px] text-brand-gold uppercase tracking-widest">Debate Competition</span>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow pt-32 pb-24 relative flex items-center justify-center">
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="max-w-xl mx-auto px-4 w-full relative z-10">
             
-            <div class="glass-card rounded-[2rem] border border-brand-gold/30 p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)] text-center">
+            <div class="glass-card rounded-[2rem] p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)] text-center">
                 
                 <h1 class="text-3xl font-display font-bold text-white mb-2">Pay via UPI</h1>
                 <h3 class="text-xl text-gray-300 mb-6">
-                    Amount Due: <b class="text-brand-gold-light text-3xl ml-2">₹<span id="amountDisplay">500</span></b>
+                    Amount Due: <b class="text-brand-gold-light text-3xl ml-2">₹500</b>
                 </h3>
                 <p class="text-gray-400 text-sm mb-8">Click the button below to open your UPI app and pay. After payment, enter the UPI Transaction ID (UTR/Reference) below and submit for verification.</p>
 
                 <div class="space-y-4 mb-10">
                     <a id="upiButton" href="#" class="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all">
-                        <i class="ph-bold ph-device-mobile"></i> Pay via UPI App
+                        <i class="ph-bold ph-device-mobile"></i> Pay ₹500 via UPI App
                     </a>
                     
                     <div class="flex items-center gap-4 py-2">
@@ -140,7 +105,7 @@
                         </div>
 
                         <button type="submit" class="w-full bg-white text-black font-bold text-md py-3 rounded-xl hover:bg-gray-200 transition-all flex justify-center items-center gap-2 mt-2">
-                            Complete Team Registration <i class="ph-bold ph-check-circle"></i>
+                            Verify & Generate Entry Card <i class="ph-bold ph-check-circle"></i>
                         </button>
                     </form>
                     
@@ -170,7 +135,7 @@
                     <li>If you send a request to join the WhatsApp group, <b>your request will be approved only after your payment and UTR are successfully verified</b> by the core committee.</li>
                 </ol>
             </div>
-
+            
         </div>
     </main>
 
@@ -189,8 +154,9 @@
         const NOTE = "Debate Registration";
         const CURRENCY = "INR";
         
-        // REPLACE THIS WITH YOUR DEBATE APPS SCRIPT URL!
+        // --- REPLACE THIS WITH YOUR DEBATE APPS SCRIPT URL ---
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYrR9cZKdeFF7jXY6D0P5DzyFdKeogDWnO7k8mAfnr6b9azJvcLl9vDNN9bsC9lRfMwA/exec";
+        // -----------------------------------------------------
         
         function buildUpiLink(vpa, name, amount, note) {
             const params = new URLSearchParams({ pa: vpa, pn: name, am: String(amount), tn: note, cu: CURRENCY });
@@ -203,17 +169,16 @@
                 window.location.href = "registration.html"; 
                 return;
             }
-            document.getElementById("amountDisplay").textContent = data.amount_rupees || 500;
-            document.getElementById("upiButton").href = buildUpiLink(UPI_ID, UPI_NAME, data.amount_rupees || 500, NOTE);
+            // Always set to 500 based on the fixed pricing
+            document.getElementById("upiButton").href = buildUpiLink(UPI_ID, UPI_NAME, 500, NOTE);
         });
 
         function showQR() {
-            document.getElementById("qr-img").src = "assets/img/qrcode.jpg"; // Update to your QR code file
+            document.getElementById("qr-img").src = "assets/img/qrcode.jpg"; 
             document.getElementById("qr").style.display = 'block';
             document.getElementById("qrLink").style.display = 'none';
         }
 
-        // ULTRA-COMPRESSION FUNCTION FOR GOOGLE SHEETS
         function compressAndGetBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -223,7 +188,7 @@
                     img.src = event.target.result;
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        const MAX_WIDTH = 800; // Aggressive resize for UTR legibility
+                        const MAX_WIDTH = 500;
                         const scaleSize = MAX_WIDTH / img.width;
                         
                         let newWidth = MAX_WIDTH;
@@ -240,7 +205,6 @@
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, newWidth, newHeight);
 
-                        // Compress to JPEG with 50% quality (0.5)
                         const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5);
                         
                         resolve({
@@ -254,7 +218,6 @@
             });
         }
 
-        // Form Submission
         document.getElementById("verifyForm").addEventListener("submit", async function(e){
             e.preventDefault();
             const utr = this.utr.value.trim();
@@ -270,7 +233,7 @@
             const status = document.getElementById("status");
             const cat = document.getElementById("cat");
             
-            cat.style.display = "flex"; // Uses Flex to keep the loader centered
+            cat.style.display = "flex"; 
             status.style.display = "block";
             status.textContent = "Verifying Team Payment & Compressing Image...";
 

@@ -41,13 +41,13 @@
         #rules-modal { transition: opacity 0.4s ease, visibility 0.4s ease; }
     </style>
 </head>
-<body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col">
+<body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col overflow-hidden">
 
     <div id="rules-modal" class="fixed inset-0 z-[100] flex items-center justify-center glass-modal px-4">
         <div class="glass-card max-w-2xl w-full rounded-[2rem] p-8 md:p-10 shadow-[0_0_50px_rgba(212,175,55,0.15)] transform transition-transform scale-100 relative max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
-                <i class="ph-duotone ph-paint-brush text-5xl text-brand-gold-light mb-3"></i>
-                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-tight">Event Rules</h2>
+                <i class="ph-duotone ph-layout text-5xl text-brand-gold-light mb-3"></i>
+                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-tight">Poster Making Rules & Regulations</h2>
                 <p class="text-brand-gold text-sm mt-1">Please read carefully before registering</p>
             </div>
             
@@ -59,10 +59,10 @@
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../index.html" class="px-8 py-3 rounded-xl border border-gray-600 text-gray-300 font-bold hover:bg-gray-800 hover:text-white transition-all text-center">
+                <a href="../registration.html" class="px-8 py-3 rounded-xl border border-gray-600 text-gray-300 font-bold hover:bg-gray-800 hover:text-white transition-all text-center">
                     Decline & Go Back
                 </a>
-                <button onclick="acceptRules()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2">
+                <button id="acceptBtn" onclick="acceptRules()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2">
                     I Accept <i class="ph-bold ph-check-circle"></i>
                 </button>
             </div>
@@ -72,8 +72,8 @@
     <nav class="fixed w-full z-50 glass-nav py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <a href="../index.html" class="flex items-center gap-2 group">
-                    <span class="font-display font-bold text-lg text-white hover:text-brand-gold transition-colors"><i class="ph-bold ph-arrow-left mr-1"></i> HOME</span>
+                <a href="../registration.html" class="flex items-center gap-2 group">
+                    <span class="font-display font-bold text-lg text-white hover:text-brand-gold transition-colors"><i class="ph-bold ph-arrow-left mr-1"></i> BACK</span>
                 </a>
                 <div class="flex flex-col text-right">
                     <span class="font-display font-bold text-lg text-white">NOVA STELLAR</span>
@@ -94,16 +94,28 @@
             <div class="glass-card rounded-[2rem] border border-brand-gold/30 p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)]">
                 
                 <form id="registrationForm" class="space-y-6">
+                    
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-brand-gold uppercase tracking-wide">Select Participant Type</label>
+                        <select id="participantType" name="type" required class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold appearance-none">
+                            <option value="" disabled selected>-- Choose College Affiliation --</option>
+                            <option value="sfs">Intra College (SFS College Student)</option>
+                            <option value="other">Inter College (Other College Student)</option>
+                        </select>
+                    </div>
+
                     <div class="space-y-4">
                         <h3 class="text-brand-gold text-xs font-bold uppercase tracking-widest border-b border-brand-gold/20 pb-2">Participant Details</h3>
                         <div class="grid sm:grid-cols-2 gap-4">
-                            <input type="text" name="name" placeholder="Full Name" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" required>
-                            <input type="tel" name="phone" placeholder="WhatsApp Number" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" required>
+                            <input type="text" name="name" placeholder="Full Name" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                            <input type="tel" name="phone" placeholder="WhatsApp Number" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
                         </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <input type="email" name="email" placeholder="Email Address" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" required>
-                            <input type="text" name="college" placeholder="College / School Name" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none" required>
-                        </div>
+                        <input type="email" name="email" placeholder="Email Address" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors" required>
+                    </div>
+
+                    <div id="collegeInputGroup" class="space-y-2 hidden pt-2">
+                        <h3 class="text-brand-gold text-xs font-bold uppercase tracking-widest border-b border-brand-gold/20 pb-2">Institution</h3>
+                        <input type="text" id="collegeName" name="college" placeholder="Enter College Name" class="w-full bg-[#000] border border-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors">
                     </div>
 
                     <div class="bg-[#000] border border-brand-gold/50 rounded-xl p-4 flex justify-between items-center mt-6">
@@ -111,9 +123,10 @@
                         <span class="text-2xl font-bold text-brand-gold-light">₹200</span>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                    <button id="proceedBtn" type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
                         Proceed to Payment <i class="ph-bold ph-arrow-right"></i>
                     </button>
+                    
                 </form>
             </div>
         </div>
@@ -134,23 +147,98 @@
     </footer>
 
     <script>
-        function acceptRules() { document.getElementById('rules-modal').classList.add('modal-hidden'); }
+    // --- REPLACE THIS WITH YOUR POSTER MAKING SCRIPT URL ---
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytaBrXNhMx2M9IjZuaSBARkF7aQn4WO-Dz5V5xKSGwAAOkqRR8BJaImXFQolaFGQ/exec";
 
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('loadingOverlay').classList.remove('hidden');
+    const originalRulesHTML = `
+        <p>1. <b>Participation:</b> This is a solo event. Only 50 seats are available.</p>
+        <p>2. <b>Registration Fee:</b> A fixed fee of <b>₹200 per participant</b> is applicable.</p>
+        <p>3. <b>Materials:</b> A3 size sheet will be provided. You must bring all other stationery/colors.</p>
+        <p>4. <b>Timing:</b> 1 Hour time limit. You must report 20 minutes before the event starts.</p>
+    `;
 
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-            
-            data.amount_rupees = 200; 
-            data.eventName = "Poster Making Competition";
+    document.addEventListener("DOMContentLoaded", async () => {
+        const rulesContainer = document.querySelector(".space-y-4.text-gray-300");
+        const acceptBtn = document.getElementById("acceptBtn");
+        const proceedBtn = document.getElementById("proceedBtn");
 
-            setTimeout(() => {
-                sessionStorage.setItem("posterMakingData", JSON.stringify(data));
-                window.location.href = "payment.html"; 
-            }, 800);
-        });
+        rulesContainer.innerHTML = `<div class="text-center py-8"><div class="w-10 h-10 border-4 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin mx-auto mb-4"></div><p class="text-brand-gold font-bold animate-pulse">Checking Seat Availability...</p></div>`;
+        acceptBtn.style.display = 'none';
+
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL);
+            const data = await response.json();
+
+            if (data.isFull) {
+                rulesContainer.innerHTML = `
+                    <div class="text-center py-6 glass-card border-red-500/30 rounded-2xl bg-red-500/10">
+                        <i class="ph-duotone ph-warning-circle text-6xl text-red-500 mb-2"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Registration Closed</h3>
+                        <p class="text-gray-300">We have reached the maximum capacity of ${data.maxSeats} participants for Poster Making.</p>
+                    </div>
+                `;
+                if(proceedBtn) {
+                    proceedBtn.disabled = true;
+                    proceedBtn.innerHTML = "Registration Full";
+                    proceedBtn.classList.replace("from-brand-gold", "from-gray-600");
+                    proceedBtn.classList.replace("to-brand-gold-light", "to-gray-500");
+                }
+            } else {
+                rulesContainer.innerHTML = originalRulesHTML + `
+                    <div class="mt-6 p-4 bg-brand-gold/10 border border-brand-gold/30 rounded-xl text-center shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                        <p class="text-brand-gold-light text-lg font-bold">🔥 Hurry Up! Only ${data.seatsAvailable} seats remaining!</p>
+                    </div>
+                `;
+                acceptBtn.style.display = 'flex';
+                
+                const formHeader = document.querySelector(".text-center.mb-10.space-y-2");
+                if(formHeader) {
+                    formHeader.innerHTML += `<div class="inline-block mt-4 px-4 py-2 bg-brand-gold/20 border border-brand-gold/50 rounded-full text-brand-gold-light text-sm font-bold animate-pulse">🔥 Only ${data.seatsAvailable} Seats Left!</div>`;
+                }
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            rulesContainer.innerHTML = originalRulesHTML;
+            acceptBtn.style.display = 'flex';
+        }
+    });
+
+    function acceptRules() { 
+        document.getElementById('rules-modal').classList.add('modal-hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    const typeSelect = document.getElementById('participantType');
+    const collegeGroup = document.getElementById('collegeInputGroup');
+    const collegeInput = document.getElementById('collegeName');
+
+    typeSelect.addEventListener('change', function() {
+        if (this.value === 'sfs') {
+            collegeGroup.classList.add('hidden');
+            collegeInput.removeAttribute('required');
+            collegeInput.value = '';
+        } else if (this.value === 'other') {
+            collegeGroup.classList.remove('hidden');
+            collegeInput.setAttribute('required', 'true');
+        }
+    });
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('loadingOverlay').classList.remove('hidden');
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        data.amount_rupees = 200; 
+        data.eventName = "Poster Making Competition";
+        data.college = data.type === 'sfs' ? 'SFS College' : data.college;
+
+        setTimeout(() => {
+            sessionStorage.setItem("posterMakingData", JSON.stringify(data));
+            window.location.href = "payment.html"; 
+        }, 800);
+    });
     </script>
 </body>
 </html>

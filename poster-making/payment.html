@@ -54,7 +54,7 @@
                 <div class="bg-[#000] border border-gray-800 rounded-2xl p-6 relative">
                     <h3 class="text-white font-bold mb-4 text-left">Verify Payment</h3>
                     <form id="verifyForm" class="space-y-4">
-                        <input type="text" name="utr" class="w-full bg-gray-900 border border-gray-700 text-white rounded-xl px-4 py-3 outline-none focus:border-brand-gold text-center font-mono tracking-wider" placeholder="Enter 12-Digit UTR / Ref No." required />
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="12" name="utr" class="w-full bg-gray-900 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors text-center font-mono tracking-wider placeholder-gray-500" placeholder="Enter 12-Digit UTR / Ref No." required />
                         
                         <div class="space-y-2">
                             <label class="text-xs font-semibold text-brand-gold uppercase block text-left">Upload Payment Screenshot</label>
@@ -83,6 +83,17 @@
 
                 </div>
             </div>
+
+            <div class="mt-8 bg-brand-gold-dark/10 border border-brand-gold-dark/30 rounded-2xl p-6 shadow-sm">
+                <h4 class="text-brand-gold-light font-bold mb-3 flex items-center gap-2">
+                    <i class="ph-fill ph-warning-circle text-xl"></i> Important Notes
+                </h4>
+                <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
+                    <li>If the page is reloaded after payment, you do <b>not</b> need to pay again. Re-fill the form with your details and enter the Transaction ID / UTR to get your receipt.</li>
+                    <li>If you send a request to join the WhatsApp group, <b>your request will be approved only after your payment and UTR are successfully verified</b> by the core committee.</li>
+                </ol>
+            </div>
+
         </div>
     </main>
 
@@ -96,7 +107,7 @@
     </footer>
 
     <script>
-        const UPI_ID = "ayushpatil311@okaxis"; 
+        const UPI_ID = "st.francisdesalescollege@sbi"; 
         const UPI_NAME = "Nova Stellar Poster Making";
         const NOTE = "Poster Making Registration";
         
@@ -118,7 +129,7 @@
         });
 
         function showQR() {
-            document.getElementById("qr-img").src = "assets/img/qrcode.jpg"; // Path to QR
+            document.getElementById("qr-img").src = "../img/qrCode.webp"; // Path to QR
             document.getElementById("qr").style.display = 'block';
             document.getElementById("qrLink").style.display = 'none';
         }
@@ -133,7 +144,7 @@
                     img.src = event.target.result;
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        const MAX_WIDTH = 800; // Updated to 800px per your request
+                        const MAX_WIDTH = 800; // Updated to 800px
                         const scaleSize = MAX_WIDTH / img.width;
                         
                         let newWidth = MAX_WIDTH;
@@ -150,7 +161,7 @@
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, newWidth, newHeight);
 
-                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6); // slight quality bump for 800px
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6); 
                         resolve({
                             base64: compressedDataUrl.split(',')[1],
                             mimeType: 'image/jpeg' 

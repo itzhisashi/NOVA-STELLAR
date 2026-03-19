@@ -75,10 +75,10 @@
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../registration.html" class="px-8 py-3 rounded-xl border border-gray-600 text-gray-300 font-bold hover:bg-gray-800 hover:text-white transition-all text-center">
+                <a href="../index.html" class="px-8 py-3 rounded-xl border border-gray-600 text-gray-300 font-bold hover:bg-gray-800 hover:text-white transition-all text-center">
                     Decline & Go Back
                 </a>
-                <button onclick="acceptRules()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2">
+                <button id="acceptBtn" onclick="acceptRules()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2">
                     I Accept <i class="ph-bold ph-check-circle"></i>
                 </button>
             </div>
@@ -157,7 +157,7 @@
                         <span class="text-2xl font-bold text-brand-gold-light">₹500</span>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
+                    <button id="proceedBtn" type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 mt-4">
                         Proceed to Payment <i class="ph-bold ph-arrow-right"></i>
                     </button>
                 </form>
@@ -180,45 +180,108 @@
         </div>
     </footer>
 
-    <script>
-        function acceptRules() { 
-            document.getElementById('rules-modal').classList.add('modal-hidden');
-            document.body.classList.remove('overflow-hidden');
-        }
+   <script>
+    // Using the Script URL from your payment page
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYrR9cZKdeFF7jXY6D0P5DzyFdKeogDWnO7k8mAfnr6b9azJvcLl9vDNN9bsC9lRfMwA/exec";
 
-        const typeSelect = document.getElementById('participantType');
-        const collegeGroup = document.getElementById('collegeInputGroup');
-        const collegeInput = document.getElementById('collegeName');
+    const originalRulesHTML = `
+        <p class="mb-3 text-gray-300">1. <b>Team Composition:</b> This is a mandatory <b>Two-Member Team</b> event. One participant must argue <b>FOR</b> the motion, and the other must argue <b>AGAINST</b> the motion. (1 College = 1 Team).</p>
+        <p class="mb-3 text-gray-300">2. <b>Registration Fee:</b> A fixed fee of <b>₹500 per team</b> is applicable for both Intra and Inter-college participants. Registration fees once paid are <b>strictly non-refundable</b> under any circumstances.</p>
+        <p class="mb-3 text-gray-300">3. <b>Verification:</b> Acceptance for the official WhatsApp group and the event will be granted only after successful UTR and payment screenshot verification.</p>
+        <p class="mb-3 text-gray-300">4. <b>Dress Code & ID:</b> All participants must strictly wear their <b>college uniform</b> and carry a valid <b>college ID card</b>. Participation will not be allowed without valid identification.</p>
+        <p class="mb-3 text-gray-300">5. <b>Reporting Time:</b> Participants must report to the College Auditorium by <b>9:15 AM</b> sharp. The event will commence strictly at 10:00 AM.</p>
+        <p class="mb-3 text-gray-300">6. <b>Time Limits:</b> In Round 1, each participant gets exactly <b>3 minutes</b> to present their argument. Teams shortlisted for Round 2 will participate in a 40-50 minute rebuttal session.</p>
+        <p class="mb-3 text-gray-300">7. <b>Conduct & Decorum:</b> Respectful and constructive discussion is mandatory. Any form of indecency, use of unparliamentary language, or violation of debate decorum will lead to immediate disqualification.</p>
+        <p class="mb-3 text-gray-300">8. <b>Final Authority:</b> The decision of the judges, moderators, and the organizing committee will be <b>final and binding</b> in all matters.</p>
+    `;
 
-        // Toggle College input based on Intra/Inter selection
-        typeSelect.addEventListener('change', function() {
-            if (this.value === 'sfs') {
-                collegeGroup.classList.add('hidden');
-                collegeInput.removeAttribute('required');
-                collegeInput.value = '';
-            } else if (this.value === 'other') {
-                collegeGroup.classList.remove('hidden');
-                collegeInput.setAttribute('required', 'true');
+    document.addEventListener("DOMContentLoaded", async () => {
+        const rulesContainer = document.querySelector(".space-y-4.text-gray-300");
+        const acceptBtn = document.getElementById("acceptBtn");
+        const proceedBtn = document.getElementById("proceedBtn");
+
+        // Loading state
+        rulesContainer.innerHTML = `<div class="text-center py-8"><div class="w-10 h-10 border-4 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin mx-auto mb-4"></div><p class="text-brand-gold font-bold animate-pulse">Checking Seat Availability...</p></div>`;
+        acceptBtn.style.display = 'none';
+
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL);
+            const data = await response.json();
+
+            if (data.isFull) {
+                // SEATS FULL STATE
+                rulesContainer.innerHTML = `
+                    <div class="text-center py-6 glass-card border-red-500/30 rounded-2xl bg-red-500/10">
+                        <i class="ph-duotone ph-warning-circle text-6xl text-red-500 mb-2"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Registration Closed</h3>
+                        <p class="text-gray-300">We have reached the maximum capacity of ${data.maxSeats} teams for the Debate Competition.</p>
+                    </div>
+                `;
+                
+                if(proceedBtn) {
+                    proceedBtn.disabled = true;
+                    proceedBtn.innerHTML = "Registration Full";
+                    proceedBtn.classList.replace("from-brand-gold", "from-gray-600");
+                    proceedBtn.classList.replace("to-brand-gold-light", "to-gray-500");
+                }
+            } else {
+                // SEATS AVAILABLE STATE
+                rulesContainer.innerHTML = originalRulesHTML + `
+                    <div class="mt-6 p-4 bg-brand-gold/10 border border-brand-gold/30 rounded-xl text-center shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                        <p class="text-brand-gold-light text-lg font-bold">🔥 Hurry Up! Only ${data.seatsAvailable} seats remaining!</p>
+                    </div>
+                `;
+                acceptBtn.style.display = 'flex';
+                
+                // Show banner above form
+                const formHeader = document.querySelector(".text-center.mb-10.space-y-2");
+                if(formHeader) {
+                    formHeader.innerHTML += `<div class="inline-block mt-4 px-4 py-2 bg-brand-gold/20 border border-brand-gold/50 rounded-full text-brand-gold-light text-sm font-bold animate-pulse">🔥 Only ${data.seatsAvailable} Seats Left!</div>`;
+                }
             }
-        });
+        } catch (error) {
+            console.error("Error:", error);
+            // Fallback
+            rulesContainer.innerHTML = originalRulesHTML;
+            acceptBtn.style.display = 'flex';
+        }
+    });
 
-        document.getElementById('debateRegistrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    function acceptRules() { 
+        document.getElementById('rules-modal').classList.add('modal-hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
 
-            document.getElementById('loadingOverlay').classList.remove('hidden');
+    const typeSelect = document.getElementById('participantType');
+    const collegeGroup = document.getElementById('collegeInputGroup');
+    const collegeInput = document.getElementById('collegeName');
 
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Hardcode the amount to 500 regardless of selection
-            data.amount_rupees = 500;
-            data.college = data.type === 'sfs' ? 'SFS College' : data.college;
+    typeSelect.addEventListener('change', function() {
+        if (this.value === 'sfs') {
+            collegeGroup.classList.add('hidden');
+            collegeInput.removeAttribute('required');
+            collegeInput.value = '';
+        } else if (this.value === 'other') {
+            collegeGroup.classList.remove('hidden');
+            collegeInput.setAttribute('required', 'true');
+        }
+    });
 
-            setTimeout(() => {
-                sessionStorage.setItem("debateTeamData", JSON.stringify(data));
-                window.location.href = "payment.html"; 
-            }, 800);
-        });
-    </script>
+    document.getElementById('debateRegistrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('loadingOverlay').classList.remove('hidden');
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        data.amount_rupees = 500;
+        data.college = data.type === 'sfs' ? 'SFS College' : data.college;
+
+        setTimeout(() => {
+            sessionStorage.setItem("debateTeamData", JSON.stringify(data));
+            window.location.href = "payment.html"; 
+        }, 800);
+    });
+</script>
 </body>
 </html>

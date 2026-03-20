@@ -105,6 +105,21 @@
         </div>
     </main>
 
+    <div id="loadingOverlay" class="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center hidden">
+        <div class="w-20 h-20 border-4 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin mb-4"></div>
+        <h3 class="text-white font-display text-xl font-bold tracking-widest uppercase">Initializing Payment</h3>
+        <p class="text-brand-gold-light mt-2 text-sm">Setting up your portal...</p>
+    </div>
+
+     <footer class="bg-[#000] py-6 border-t border-brand-gold/20 relative mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-sm mb-2">© 2026 Nova Stellar Core Committee. All rights reserved.</p>
+            <div class="text-xs font-medium text-gray-400">
+                Developed by <a href="https://im-ayu-sh.netlify.app/" target="_blank" class="text-brand-gold hover:text-brand-gold-light transition-colors underline decoration-brand-gold/30 underline-offset-4">Ayush Patil</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         // --- REPLACE THIS WITH YOUR BAND GOOGLE APPS SCRIPT URL ---
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoSG6mfKVcKKAskMKJgDBv1WBw5dx9pCYaG6Mlf-dlFB9kGwk1Jr--08z5yxE-Bun3/exec";
@@ -185,14 +200,19 @@
 
         document.getElementById('bandForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            document.getElementById('loadingOverlay').classList.remove('hidden');
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
             data.amount_rupees = 1500;
             data.eventName = "Live Band Competition";
             data.college = data.type === 'sfs' ? 'SFS College' : data.college;
             
-            sessionStorage.setItem("bandRegData", JSON.stringify(data));
-            window.location.href = "payment.html";
+            
+            setTimeout(() => {
+                sessionStorage.setItem("bandRegData", JSON.stringify(data));
+                window.location.href = "payment.html";
+            }, 800);
         });
     </script>
 </body>

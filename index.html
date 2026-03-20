@@ -596,10 +596,10 @@
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Date</p>
                     <p class="text-white font-bold text-lg">10th April 2026</p>
                 </div>
-                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                <div class="p-5 rounded-xl text-center border border-brand-gold/30 bg-gradient-to-br from-[#0a0a0a] via-brand-gold/10 to-[#0a0a0a] shadow-[inset_0_0_20px_rgba(212,175,55,0.05)] animate-[pulse_4s_ease-in-out_infinite]">
                     <i class="ph-duotone ph-clock text-3xl text-brand-gold mb-2"></i>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Time</p>
-                    <p class="text-white font-bold text-lg">10:30 AM – 3:00 PM</p>
+                    <p class="text-brand-gold-dark text-[10px] uppercase tracking-wider font-bold">Time</p>
+                    <p class="text-brand-gold-light font-bold text-lg tracking-wide">10:30 AM – 3:00 PM</p>
                 </div>
                 <div class="glass-card p-5 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-map-pin text-3xl text-brand-gold mb-2"></i>
@@ -746,7 +746,7 @@
     </div>
 </div>
 
-   <div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+<div id="window-debate" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
     <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
         <div class="flex items-center gap-3">
             <i class="ph-duotone ph-microphone-stage text-3xl text-brand-gold"></i>
@@ -758,7 +758,7 @@
     </div>
 
     <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
-        <div class="max-w-4xl mx-auto space-y-10">
+        <div class="max-w-4xl mx-auto space-y-10 pb-10">
             
             <div class="text-center space-y-4">
                 <h3 class="text-3xl sm:text-4xl font-display font-bold text-white">The Great <span class="text-brand-gold">Verbal Duel</span></h3>
@@ -767,8 +767,7 @@
                 </p>
             </div>
 
-            <!-- Download brochure button -->
-             <div class="pt-2 max-w-md mx-auto">
+            <div class="pt-2 max-w-md mx-auto">
                     <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
                         <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
                         Download Official Brochure
@@ -788,11 +787,26 @@
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Team Size</p>
                     <p class="text-white font-bold">2 Members</p>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
+                <!-- <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-clock text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Reporting Time</p>
                     <p class="text-white font-bold">9:15 AM</p>
+                </div> -->
+                <div class="relative glass-card p-4 rounded-xl text-center border border-brand-gold/50 bg-[#0a0a0a] h-full flex flex-col justify-center overflow-hidden">
+    
+                    <div class="absolute inset-0 shadow-[inset_0_0_30px_rgba(245,208,97,0.4)] animate-pulse pointer-events-none"></div>
+                    
+                    <div class="relative z-10">
+                        <i class="ph-duotone ph-clock text-2xl text-brand-gold mb-2"></i>
+                        <p class="text-brand-gold-light text-[10px] uppercase tracking-wider font-bold mb-1">Reporting Time</p>
+                        
+                        <p class="text-white font-bold text-lg drop-shadow-[0_0_10px_rgba(245,208,97,0.8)]">
+                            9:15 AM
+                        </p>
+                    </div>
+                    
                 </div>
+
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-wallet text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Entry Fee</p>
@@ -801,7 +815,7 @@
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-calendar-check text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Deadline</p>
-                    <p class="text-white font-bold text-red-400">10th April</p>
+                    <p class="text-white font-bold text-red-400">5th April</p>
                 </div>
             </div>
 
@@ -819,29 +833,30 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-6">
                     <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
-                        <i class="ph-bold ph-list-numbers"></i> Competition Rounds
+                        <i class="ph-bold ph-list-numbers"></i> Competition Format
                     </h3>
                     <div class="space-y-4">
                         <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
                             <p class="text-white font-bold">Round 1: Preliminary</p>
-                            <p class="text-gray-400 text-sm">Each participant gets <span class="text-brand-gold-light">3 minutes</span> to present their argument. Teams will be shortlisted based on performance.</p>
+                            <p class="text-gray-400 text-sm">Each speaker will be given exactly <span class="text-brand-gold-light">3 minutes</span> to present their arguments.</p>
                         </div>
                         <div class="border-l-2 border-brand-gold/30 pl-4 py-1">
-                            <p class="text-white font-bold">Round 2: Final Round (Rebuttal)</p>
-                            <p class="text-gray-400 text-sm">Focuses on rebuttals and interactive discussion. Total time: <span class="text-brand-gold-light">40-50 minutes</span>. Participants may challenge arguments and ask questions.</p>
+                            <p class="text-white font-bold">Round 2: Final</p>
+                            <p class="text-gray-400 text-sm">This will be a dedicated <span class="text-brand-gold-light">Rebuttal round</span> for shortlisted teams to challenge and counter arguments.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl space-y-4">
                     <h3 class="text-brand-gold text-xl font-bold flex items-center gap-2">
-                        <i class="ph-bold ph-scales"></i> Participation Rules
+                        <i class="ph-bold ph-scales"></i> Guidelines & Rules
                     </h3>
                     <ul class="space-y-3 text-sm text-gray-300">
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> 1 college = 1 team (2 students). One must argue FOR, the other AGAINST the motion.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Participants must wear their college uniform and carry their college ID card.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Respectful and constructive discussion is mandatory during rebuttals.</li>
-                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> The decision of the judges and moderator is final and binding.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> 1 college = 1 team (2 students). One speaks FOR, and one AGAINST the motion.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> <strong>Important:</strong> Teams must be prepared to argue for BOTH sides of the motion.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Participants must wear their college uniform and carry their college ID card (Mandatory).</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> Submit the ₹500 fee on the day of the event along with your registration form.</li>
+                        <li class="flex items-start gap-2"><i class="ph-bold ph-caret-right text-brand-gold mt-1"></i> The decision of the judges will be final.</li>
                     </ul>
                 </div>
             </div>
@@ -895,8 +910,8 @@
                          <p>Mrs. Soma Banerjee: <a href="tel:+919158022775" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 9158022775</a></p>
                          <p>Mrs. Baljeet Mudliyar: <a href="tel:+919987044521" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 9987044521</a></p>
                          <p class="font-semibold text-white mt-4">Student Coordinators:</p>
-                         <p>Ms. Anushka Lokhande: <a href="tel:+918055854191" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 8055854191</a></p>
-                         <p>Ms. Shuchita Sahu: <a href="tel:+917558526492" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 7558526492</a></p>
+                         <p>Anushka Lokhande: <a href="tel:+918055854191" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 8055854191</a></p>
+                         <p>Shuchita Sahu: <a href="tel:+917558526492" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 7558526492</a></p>
                      </div>
                 </div>
              </div>
@@ -906,164 +921,185 @@
 </div>
 
 <div id="window-face-painting" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
-        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
-            <div class="flex items-center gap-3">
-                <i class="ph-duotone ph-paint-brush text-3xl text-brand-gold"></i>
-                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Face Painting</h2>
-            </div>
-            <button onclick="closeWindow('window-face-painting')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
-                Close Window <i class="ph-bold ph-x text-lg"></i>
-            </button>
+    <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+        <div class="flex items-center gap-3">
+            <i class="ph-duotone ph-paint-brush text-3xl text-brand-gold"></i>
+            <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Face Painting</h2>
         </div>
-        
-        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
-            <div class="max-w-4xl mx-auto space-y-8 pb-10">
-                
-                <div class="text-center space-y-3">
-                    <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wider">Face Painting</h3>
-                    <p class="text-brand-gold font-mono">Venue: Seminar Hall | Reporting: 10:00 AM</p>
-                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">Transform a face into a masterpiece! Theme: Fantasy or Mythical.</p>
-                </div>
+        <button onclick="closeWindow('window-face-painting')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+            Close Window <i class="ph-bold ph-x text-lg"></i>
+        </button>
+    </div>
+    
+    <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+        <div class="max-w-4xl mx-auto space-y-8 pb-10">
+            
+            <div class="text-center space-y-3">
+                <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wider">Face Painting</h3>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Transform a face into a masterpiece! Theme: Fantasy or Mythical.</p>
+            </div>
 
-                <div class="pt-2 max-w-md mx-auto">
-                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
-                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
-                        Download Official Brochure
-                    </a>
-                </div>
-
-                <div class="bg-red-900/20 border border-red-500/30 p-3 rounded-xl text-center text-red-400 font-bold text-sm shadow-[0_0_15px_rgba(239,68,68,0.1)]">
-                    <i class="ph-bold ph-clock-countdown text-lg align-middle mr-1"></i> Last Date for Registration: 7th April 2026
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
-                        <i class="ph-duotone ph-calendar-blank text-2xl text-brand-gold mb-2"></i>
-                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Event Date</p>
-                        <p class="text-white font-bold text-sm">10th April 2026 (Day-1)</p>
+            <div class="relative group w-full max-w-lg mx-auto my-6">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-gold-dark via-brand-gold-light to-brand-gold-dark rounded-2xl blur opacity-50 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
+                <div class="relative glass-card p-5 sm:p-6 rounded-2xl border border-brand-gold/50 bg-[#0a0a0a] flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-brand-gold/20 shadow-2xl">
+                    <div class="flex flex-col items-center justify-center w-full pt-2 sm:pt-0">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-map-pin text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Venue</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">Seminar Hall</p>
                     </div>
-                    <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
-                        <i class="ph-duotone ph-map-pin text-2xl text-brand-gold mb-2"></i>
-                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Venue</p>
-                        <p class="text-white font-bold">Seminar Hall</p>
-                    </div>
-                    <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
-                        <i class="ph-duotone ph-hourglass-medium text-2xl text-brand-gold mb-2"></i>
-                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Time Limit</p>
-                        <p class="text-white font-bold">1 Hour</p>
-                    </div>
-                    <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-brand-gold/20 text-brand-gold-light text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">NO REFUND</div>
-                        <i class="ph-duotone ph-ticket text-2xl text-brand-gold mb-2 mt-1"></i>
-                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Registration Fee</p>
-                        <p class="text-white font-bold">₹199</p>
+                    <div class="flex flex-col items-center justify-center w-full pt-4 sm:pt-0 pl-0 sm:pl-8">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-clock text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Reporting</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">10:00 AM</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
+            <div class="pt-2 max-w-md mx-auto">
+                <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                    <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                    Download Official Brochure
+                </a>
+            </div>
+
+            <div class="bg-red-900/20 border border-red-500/30 p-3 rounded-xl text-center text-red-400 font-bold text-sm shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                <i class="ph-bold ph-clock-countdown text-lg align-middle mr-1"></i> Last Date for Registration: 7th April 2026
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                    <i class="ph-duotone ph-calendar-blank text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Event Date</p>
+                    <p class="text-white font-bold text-sm">10th April 2026 (Day-1)</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                    <i class="ph-duotone ph-map-pin text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Venue</p>
+                    <p class="text-white font-bold">Seminar Hall</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center">
+                    <i class="ph-duotone ph-hourglass-medium text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Time Limit</p>
+                    <p class="text-white font-bold">1 Hour</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-gray-800 p-4 rounded-2xl text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-gold/20 text-brand-gold-light text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">NO REFUND</div>
+                    <i class="ph-duotone ph-ticket text-2xl text-brand-gold mb-2 mt-1"></i>
+                    <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Registration Fee</p>
+                    <p class="text-white font-bold">₹199</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xl font-display font-bold text-white mb-5 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
+                        <i class="ph-fill ph-warning-circle text-brand-gold"></i> Rules & Regulations
+                    </h4>
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl h-full">
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must follow the given theme.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Each participant must work individually (no teamwork).</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> The painting must be completed within the given time limit.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must start with a clean face (no pre-painted designs or masks).</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> All designs must be original (no copyrighted or copied images).</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Offensive or inappropriate designs will lead to disqualification.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Only skin-safe and approved materials should be used.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must keep their workspace clean.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Only approved face painting materials are allowed.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must bring a student whose face they will paint.</li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Registration fee once paid will not be refunded under any circumstances.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="pt-[2px]">
                         <h4 class="text-xl font-display font-bold text-white mb-5 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
-                            <i class="ph-fill ph-warning-circle text-brand-gold"></i> Rules & Regulations
+                            <i class="ph-fill ph-magic-wand text-brand-gold"></i> Theme & Materials
                         </h4>
-                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl h-full">
-                            <ul class="space-y-3 text-sm text-gray-300">
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must follow the given theme.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Each participant must work individually (no teamwork).</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> The painting must be completed within the given time limit.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must start with a clean face (no pre-painted designs or masks).</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> All designs must be original (no copyrighted or copied images).</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-x text-red-500 mt-1 shrink-0"></i> Offensive or inappropriate designs will lead to disqualification.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Only skin-safe and approved materials should be used.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must keep their workspace clean.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Only approved face painting materials are allowed.</li>
-                                <li class="flex items-start gap-2"><i class="ph-bold ph-check text-brand-gold mt-1 shrink-0"></i> Participants must bring a student whose face they will paint.</li>
+                        <div class="bg-[#0a0a0a] border border-brand-gold/30 p-5 rounded-2xl mb-4 shadow-[0_0_20px_rgba(212,175,55,0.05)] text-center">
+                            <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Official Theme</p>
+                            <p class="text-2xl font-bold text-brand-gold-light">Fantasy or Mythical</p>
+                        </div>
+                        <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
+                            <p class="text-brand-gold font-semibold mb-3 text-sm">Approved Skin-Safe Materials:</p>
+                            <ul class="grid grid-cols-2 gap-2 text-sm text-gray-400">
+                                <li>• Water-Based Face Paints</li>
+                                <li>• Paint Brushes & Sponges</li>
+                                <li>• Palette / Mixing Dish</li>
+                                <li>• Mirror</li>
+                                <li>• Water & Towels</li>
+                                <li>• Palette Knife</li>
+                                <li>• Disposable Aprons</li>
+                                <li>• First Aid Kit</li>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="space-y-6">
-                        <div class="pt-[2px]">
-                            <h4 class="text-xl font-display font-bold text-white mb-5 flex items-center gap-2 border-l-4 border-brand-gold pl-3">
-                                <i class="ph-fill ph-magic-wand text-brand-gold"></i> Theme & Materials
-                            </h4>
-                            <div class="bg-[#0a0a0a] border border-brand-gold/30 p-5 rounded-2xl mb-4 shadow-[0_0_20px_rgba(212,175,55,0.05)] text-center">
-                                <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Official Theme</p>
-                                <p class="text-2xl font-bold text-brand-gold-light">Fantasy or Mythical</p>
-                            </div>
-                            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl">
-                                <p class="text-brand-gold font-semibold mb-3 text-sm">Approved Skin-Safe Materials:</p>
-                                <ul class="grid grid-cols-2 gap-2 text-sm text-gray-400">
-                                    <li>• Water-Based Face Paints</li>
-                                    <li>• Paint Brushes & Sponges</li>
-                                    <li>• Palette / Mixing Dish</li>
-                                    <li>• Mirror</li>
-                                    <li>• Water & Towels</li>
-                                    <li>• Palette Knife</li>
-                                    <li>• Disposable Aprons</li>
-                                    <li>• First Aid Kit</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-gray-800 p-6 rounded-2xl text-center flex flex-col justify-center">
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-sm">🏆 Judging Criteria</h4>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Creativity</span>
-                            <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Skill</span>
-                            <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Theme Adherence</span>
-                            <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Visual Impact</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-brand-gold/20 to-brand-gold-dark/10 border border-brand-gold/30 p-6 rounded-2xl text-center flex flex-col justify-center">
-                        <h4 class="text-white font-bold mb-2 uppercase tracking-widest text-sm">🎁 Prizes</h4>
-                        <p class="text-brand-gold-light text-lg font-semibold">Exciting Cash Prizes for Winners!</p>
-                        <p class="text-gray-300 text-sm mt-2">Participation Certificates for all attendees.</p>
-                    </div>
-                </div>
-
-                <div class="border-t border-gray-800 pt-8 mt-8">
-                    <h4 class="text-xl font-display font-bold text-white mb-6 text-center">Event Coordinators</h4>
-                    <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                        
-                        <div class="text-center w-full md:w-auto">
-                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Teacher Coordinator</p>
-                            <div class="bg-[#0a0a0a] border border-gray-800 px-6 py-3 rounded-xl inline-block">
-                                <p class="text-white font-bold">Ms. Shruti Chourasia</p>
-                            </div>
-                        </div>
-                        
-                        <div class="hidden md:block w-px h-16 bg-gray-800"></div>
-                        
-                        <div class="text-center w-full md:w-auto">
-                            <p class="text-gray-500 text-xs uppercase tracking-wider mb-3">Student Coordinators</p>
-                            <div class="flex flex-wrap justify-center gap-4">
-                                <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
-                                    <p class="text-white text-sm font-bold">Rajveer Nageshwar</p>
-                                    <a href="tel:+917067246551" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7067246551</a>
-                                </div>
-                                <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
-                                    <p class="text-white text-sm font-bold">Nupur Bajait</p>
-                                    <a href="tel:+917798732506" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7798732506</a>
-                                </div>
-                                <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
-                                    <p class="text-white text-sm font-bold">Aayana Bansod</p>
-                                    <a href="tel:+917709698988" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7709698988</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
             </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-gray-800 p-6 rounded-2xl text-center flex flex-col justify-center">
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-sm">🏆 Judging Criteria</h4>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Creativity</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Skill</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Theme Adherence</span>
+                        <span class="bg-black border border-gray-700 text-brand-gold-light px-3 py-1.5 rounded-lg text-sm font-medium">Visual Impact</span>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-brand-gold/20 to-brand-gold-dark/10 border border-brand-gold/30 p-6 rounded-2xl text-center flex flex-col justify-center">
+                    <h4 class="text-white font-bold mb-2 uppercase tracking-widest text-sm">🎁 Prizes</h4>
+                    <p class="text-brand-gold-light text-lg font-semibold">Exciting Cash Prizes for Winners!</p>
+                    <p class="text-gray-300 text-sm mt-2">Participation Certificates for all attendees.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <h4 class="text-xl font-display font-bold text-white mb-6 text-center">Event Coordinators</h4>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    
+                    <div class="text-center w-full md:w-auto">
+                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Teacher Coordinator</p>
+                        <div class="bg-[#0a0a0a] border border-gray-800 px-6 py-3 rounded-xl inline-block">
+                            <p class="text-white font-bold">Ms. Shruti Chourasia</p>
+                            <a href="tel:+917020450906" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all mt-1 block"><i class="ph-fill ph-phone text-xs"></i> 7020450906</a>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block w-px h-16 bg-gray-800"></div>
+                    
+                    <div class="text-center w-full md:w-auto">
+                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-3">Student Coordinators</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                <p class="text-white text-sm font-bold">Rajveer Nageshwar</p>
+                                <a href="tel:+917067246551" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7067246551</a>
+                            </div>
+                            <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                <p class="text-white text-sm font-bold">Nupur Bajait</p>
+                                <a href="tel:+917798732506" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7798732506</a>
+                            </div>
+                            <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                <p class="text-white text-sm font-bold">Aayana Bansod</p>
+                                <a href="tel:+917709698988" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7709698988</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
-   <div id="window-poster" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
+  <div id="window-poster" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
     <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
         <div class="flex items-center gap-3">
             <i class="ph-duotone ph-layout text-3xl text-brand-gold"></i>
@@ -1082,7 +1118,26 @@
                 <p class="text-gray-300 text-lg max-w-2xl mx-auto italic">"Bridge the gap between art and advocacy, using bold visuals and powerful creativity to design a message for the future."</p>
             </div>
 
-            <!-- Brochure -->
+            <div class="relative group w-full max-w-lg mx-auto my-6">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-gold-dark via-brand-gold-light to-brand-gold-dark rounded-2xl blur opacity-50 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
+                <div class="relative glass-card p-5 sm:p-6 rounded-2xl border border-brand-gold/50 bg-[#0a0a0a] flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-brand-gold/20 shadow-2xl">
+                    <div class="flex flex-col items-center justify-center w-full pt-2 sm:pt-0">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-map-pin text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Venue</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">BA Wing (B111)</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-full pt-4 sm:pt-0 pl-0 sm:pl-8">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-clock text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Reporting</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">20 Mins Prior</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="pt-2 max-w-md mx-auto">
                     <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
                         <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
@@ -1096,13 +1151,13 @@
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Time Limit</p>
                     <p class="text-white font-bold">1 Hour</p>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
-                    <i class="ph-duotone ph-map-pin text-2xl text-brand-gold mb-2"></i>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Venue</p>
-                    <p class="text-white font-bold text-sm">BA Wing (B111)</p>
-                </div>
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">50 SEATS ONLY</div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">50 SEATS</div>
+                    <i class="ph-duotone ph-users text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Capacity</p>
+                    <p class="text-white font-bold text-sm">Limited Spots</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-ticket text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Entry Fee</p>
                     <p class="text-white font-bold">₹200</p>
@@ -1110,7 +1165,7 @@
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-calendar-x text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Deadline</p>
-                    <p class="text-white font-bold text-red-400">3rd April</p>
+                    <p class="text-white font-bold text-red-400">3rd April 2026</p>
                 </div>
             </div>
 
@@ -1136,28 +1191,39 @@
                     <h3 class="text-brand-gold text-xl font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-list-checks"></i> Rules & Regulations</h3>
                     <ul class="space-y-4 text-sm text-gray-400 flex-grow">
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Poster should be relevant to the given theme.</div></li>
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>College ID card is compulsory for all participants.</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong>College ID</strong> card is compulsory for all participants.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Participants must report at the venue <strong>20 minutes before</strong> the commencement of the event.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong>A3 size sheet</strong> will be provided by the organizers. All other stationery must be brought by the participants.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Participants must clearly write their Name, College Name, Class, and Mobile Number on the <strong>back side of the sheet</strong> in bold letters.</div></li>
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-x text-red-500 mt-1"></i> <div>Registration fee once paid will not be refunded under any circumstances.</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Registration fee once paid will <b>not be refunded under any circumstances.</b></div></li>
                     </ul>
                 </div>
             </div>
 
              <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-2">
-                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-4">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-4">
+                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-2">
                         <i class="ph-bold ph-chalkboard-teacher"></i> Teacher Coordinator
                      </h3>
-                     <p class="text-white font-medium text-lg">Mrs. Rashmi Kale Koche</p>
+                     <div>
+                         <p class="text-white font-medium text-lg">Mrs. Rashmi Kale Koche</p>
+                         <a href="tel:+919923752627" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 9923752627</a>
+                     </div>
                 </div>
-                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-2">
-                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-4">
+                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-4">
+                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-2">
                         <i class="ph-bold ph-student"></i> Student Coordinators
                      </h3>
-                     <p class="text-white font-medium text-lg">Arthavi Idpachi</p>
-                     <p class="text-white font-medium text-lg">Tanisha Suryawanshi</p>
+                     <div class="grid sm:grid-cols-2 gap-4">
+                         <div>
+                             <p class="text-white font-medium text-lg">Arthavi Idpachi</p>
+                             <a href="tel:+917218173458" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 7218173458</a>
+                         </div>
+                         <div>
+                             <p class="text-white font-medium text-lg">Tanisha Suryawanshi</p>
+                             <a href="tel:+918668202473" class="text-brand-gold hover:text-brand-gold-light font-mono font-bold text-sm">+91 8668202473</a>
+                         </div>
+                     </div>
                 </div>
              </div>
 
@@ -1181,13 +1247,33 @@
             
             <div class="text-center space-y-4">
                 <p class="text-gray-300 text-lg max-w-2xl mx-auto italic">"Master the symphony of light and shadow, capturing the soul of your subject with nothing but lead, paper, and precision."</p>
-                
-                <div class="pt-4 max-w-md mx-auto">
-                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
-                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
-                        Download Official Brochure
-                    </a>
+            </div>
+
+            <div class="relative group w-full max-w-lg mx-auto my-6">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-gold-dark via-brand-gold-light to-brand-gold-dark rounded-2xl blur opacity-50 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
+                <div class="relative glass-card p-5 sm:p-6 rounded-2xl border border-brand-gold/50 bg-[#0a0a0a] flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-brand-gold/20 shadow-2xl">
+                    <div class="flex flex-col items-center justify-center w-full pt-2 sm:pt-0">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-map-pin text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Venue</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">BA Wing (B112)</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-full pt-4 sm:pt-0 pl-0 sm:pl-8">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="ph-duotone ph-clock text-brand-gold text-xl"></i>
+                            <p class="text-brand-gold-light text-[10px] uppercase tracking-widest font-bold">Reporting</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-lg drop-shadow-[0_0_8px_rgba(245,208,97,0.5)]">20 Mins Prior</p>
+                    </div>
                 </div>
+            </div>
+
+            <div class="pt-4 max-w-md mx-auto">
+                <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                    <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                    Download Official Brochure
+                </a>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1196,13 +1282,13 @@
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Time Limit</p>
                     <p class="text-white font-bold">1 Hour</p>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
-                    <i class="ph-duotone ph-map-pin text-2xl text-brand-gold mb-2"></i>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Venue</p>
-                    <p class="text-white font-bold text-sm">BA Wing (B112)</p>
-                </div>
                 <div class="glass-card p-4 rounded-xl text-center border border-white/5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">50 SEATS ONLY</div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">50 SEATS</div>
+                    <i class="ph-duotone ph-users text-2xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Capacity</p>
+                    <p class="text-white font-bold text-sm">Limited Spots</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center border border-white/5">
                     <i class="ph-duotone ph-ticket text-2xl text-brand-gold mb-2"></i>
                     <p class="text-gray-500 text-[10px] uppercase tracking-wider">Entry Fee</p>
                     <p class="text-white font-bold">₹200</p>
@@ -1224,58 +1310,160 @@
                 <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl h-full">
                     <h3 class="text-brand-gold text-xl font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-list-checks"></i> Rules & Regulations</h3>
                     <ul class="space-y-4 text-sm text-gray-400">
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>College ID card is compulsory for all participants.</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><b>College ID</b> card is compulsory for all participants.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Participants must be present at the venue <strong>20 minutes before</strong> commencement.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong>A3 size sheet</strong> will be provided by the organizers. All other stationery must be brought by the participants.</div></li>
                         <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Participants must clearly write their Name, College Name, Class, and Mobile Number on the <strong>back side of the sheet</strong> in bold letters.</div></li>
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-x text-red-500 mt-1"></i> <div>Registration fee once paid will not be refunded under any circumstances.</div></li>
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div>Registration fee once paid will <b>not be refunded under any circumstances.</b></div></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-2">
-                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-4">
-                        <i class="ph-bold ph-chalkboard-teacher"></i> Teacher Coordinator
-                     </h3>
-                     <p class="text-white font-medium text-lg">Mrs. Rashmi Kale Koche</p>
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <h4 class="text-xl font-display font-bold text-white mb-6 text-center">Event Coordinators</h4>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    
+                    <div class="text-center w-full md:w-auto">
+                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Teacher Coordinator</p>
+                        <div class="bg-[#0a0a0a] border border-gray-800 px-6 py-3 rounded-xl inline-block">
+                            <p class="text-white font-bold">Mrs. Rashmi Kale Koche</p>
+                            <a href="tel:+919923752627" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all mt-1 block"><i class="ph-fill ph-phone text-xs"></i> 9923752627</a>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block w-px h-16 bg-gray-800"></div>
+                    
+                    <div class="text-center w-full md:w-auto">
+                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-3">Student Coordinators</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                <p class="text-white text-sm font-bold">Apurva Kale</p>
+                                <a href="tel:+919096533095" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 9096533095</a>
+                            </div>
+                            <div class="bg-[#0a0a0a] border border-gray-800 px-4 py-2 rounded-xl text-left">
+                                <p class="text-white text-sm font-bold">Ifra Chowdhury</p>
+                                <a href="tel:+917248940334" class="text-brand-gold hover:text-brand-gold-light hover:underline text-sm font-bold transition-all"><i class="ph-fill ph-phone text-xs"></i> 7248940334</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl space-y-2">
-                     <h3 class="text-brand-gold text-lg font-bold flex items-center gap-2 mb-4">
-                        <i class="ph-bold ph-student"></i> Student Coordinators
-                     </h3>
-                     <p class="text-white font-medium text-lg">Apurva Kale</p>
-                     <p class="text-white font-medium text-lg">Ifra Chowdhury</p>
-                </div>
-             </div>
+            </div>
 
         </div>
     </div>
 </div>
 
     <div id="window-instrument" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
-        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
-            <div class="flex items-center gap-3">
-                <i class="ph-duotone ph-guitar text-3xl text-brand-gold"></i>
-                <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Instrument</h2>
-            </div>
-            <button onclick="closeWindow('window-instrument')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
-                Close Window <i class="ph-bold ph-x text-lg"></i>
-            </button>
+    <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
+        <div class="flex items-center gap-3">
+            <i class="ph-duotone ph-guitar text-3xl text-brand-gold"></i>
+            <h2 class="text-2xl font-display font-bold text-white tracking-widest uppercase">Stellar Stage</h2>
         </div>
-        <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
-            <div class="max-w-4xl mx-auto space-y-8">
-                <p class="text-gray-300 text-lg">Experience a massive fete with a variety of delicious cuisines and exciting food stalls.</p>
-                <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
-                    <h3 class="text-brand-gold text-xl font-bold mb-4">Available Events</h3>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Book a Food Stall:</strong> Set up your own fete stall. Limited spots!</div></li>
-                        <li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-gold mt-1"></i> <div><strong class="text-white">Cooking Competition:</strong> Showcase your culinary skills with Fireless Cooking.</div></li>
-                    </ul>
+        <button onclick="closeWindow('window-instrument')" class="flex items-center gap-2 text-white hover:text-brand-gold-light bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full transition-all font-semibold">
+            Close Window <i class="ph-bold ph-x text-lg"></i>
+        </button>
+    </div>
+    
+    <div class="flex-grow overflow-y-auto p-6 sm:p-12 hide-scrollbar">
+        <div class="max-w-5xl mx-auto space-y-10 pb-10">
+            
+            <div class="text-center space-y-4">
+                <h4 class="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs">St. Francis de Sales College, Nagpur Presents NOVA</h4>
+                <h3 class="text-4xl sm:text-5xl font-display font-bold text-white">Stellar <span class="text-brand-gold">Live Band</span> Competition</h3>
+                <p class="text-gray-300 text-lg max-w-3xl mx-auto italic">"Showcase your musical talent and compete for the title in the ultimate battle of the bands!"</p>
+            </div>
+
+            <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-calendar-blank text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Date</p>
+                    <p class="text-white font-bold text-lg">11th April 2026 (Day 2)</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-clock text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Time</p>
+                    <p class="text-white font-bold text-lg">6:30 PM – 7:15 PM</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl text-center border border-white/5">
+                    <i class="ph-duotone ph-map-pin text-3xl text-brand-gold mb-2"></i>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-wider">Venue</p>
+                    <p class="text-white font-bold text-lg">College Ground</p>
                 </div>
             </div>
+
+            <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl">
+                <h3 class="text-brand-gold text-xl font-bold mb-6 text-center flex justify-center items-center gap-2"><i class="ph-bold ph-ticket"></i> Entry Fee</h3>
+                <div class="max-w-md mx-auto">
+                    <div class="bg-black border border-brand-gold/20 p-6 rounded-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-brand-gold text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Per Group</div>
+                        <p class="text-gray-400 font-semibold mb-1">Registration Fee</p>
+                        <h4 class="text-4xl font-display font-bold text-white">₹1500</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-[#0a0a0a] border border-gray-800 p-8 rounded-2xl h-full">
+                        <h3 class="text-brand-gold text-xl font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-list-checks"></i> Competition Rules</h3>
+                        <div class="space-y-4 text-sm text-gray-400">
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Time Limit: 3 - 5 minutes </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Band Size: Maximum 7 members </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Bands must bring their own instruments and equipment </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Pre-recorded music is not allowed </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Participants must arrive early for sound check </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Follow a decent dress code </p></div>
+                            <div class="flex items-start gap-3"><span class="text-brand-gold font-bold">•</span> <p>Judges' decision will be final </p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111] border border-brand-gold/40 p-8 rounded-2xl h-full shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+                        <h3 class="text-brand-gold-light text-xl font-bold mb-4 flex items-center gap-2"><i class="ph-bold ph-trophy"></i> Rewards & Recognition</h3>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-crown text-brand-gold mt-0.5"></i> <div><strong class="text-white">Cash Prizes:</strong> Exciting cash rewards for the winners </div></li>
+                            <li class="flex items-start gap-3"><i class="ph-bold ph-certificate text-brand-gold mt-0.5"></i> <div><strong class="text-white">Certificates:</strong> Participation certificates for all contestants </div></li>
+                        </ul>
+                        <div class="mt-8 p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-xl">
+                            <p class="text-brand-gold-light text-sm font-semibold italic text-center">Auditions and elimination rounds will be conducted if registrations exceed capacity </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl flex flex-col justify-center">
+                <h3 class="text-brand-gold text-lg font-bold mb-4 flex items-center gap-2"><i class="ph-bold ph-phone-call"></i> Coordinator Contacts</h3>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Teacher Coordinators</h4>
+                        <p class="text-gray-400 text-sm">Dr. Sachin Krushna - <a href="tel:7276144402" class="text-brand-gold hover:text-brand-gold-light transition-colors">7276144402</a> </p>
+                        <p class="text-gray-400 text-sm">Dr. Rajkumari Yadav - <a href="tel:9673639932" class="text-brand-gold hover:text-brand-gold-light transition-colors">9673639932</a> </p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold text-sm mb-2 border-b border-gray-700 pb-1">Student Coordinators</h4>
+                        <p class="text-gray-400 text-sm">Aryan Kamble - <a href="tel:7498912753" class="text-brand-gold hover:text-brand-gold-light transition-colors">7498912753</a> </p>
+                        <p class="text-gray-400 text-sm">Janak Chalkhor - <a href="tel:7666154055" class="text-brand-gold hover:text-brand-gold-light transition-colors">7666154055</a> </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center space-y-1 pt-4">
+                <p class="text-brand-gold-light font-display font-bold text-xl uppercase tracking-widest">Let the Music Speak!</p>
+                <p class="text-gray-400 font-medium tracking-wider">St. Francis De Sales College, Nagpur</p>
+            </div>
+
         </div>
     </div>
+</div>
 
     <div id="window-singing" class="fixed inset-0 z-[100] hidden flex-col bg-black/90 backdrop-blur-xl w-full h-full">
     <div class="flex justify-between items-center p-6 border-b border-white/10 bg-black/50 shrink-0">
@@ -1294,6 +1482,13 @@
             <div class="text-center space-y-3">
                 <p class="text-brand-gold font-semibold tracking-[0.2em] uppercase">Unleash Your Voice • Captivate the Audience • Become the Star</p>
                 <p class="text-gray-300 text-lg max-w-2xl mx-auto">Harness the power of the human voice to command the stage, turning every lyric and note into a profound emotional journey. Open to all UG and PG students.</p>
+            </div>
+
+            <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
             </div>
 
             <div>
@@ -1394,6 +1589,13 @@
                 <div class="text-center space-y-3">
                     <p class="text-brand-gold font-semibold tracking-[0.2em] uppercase">Feel the Beat • Own the Stage • Express the Rhythm</p>
                     <p class="text-gray-300 text-lg max-w-2xl mx-auto">Get ready to showcase your talent and passion for dance! Join us for an exciting Inter-College Dance Festival featuring multiple categories and amazing prizes.</p>
+                </div>
+
+                <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
                 </div>
 
                 <div>
@@ -1564,6 +1766,13 @@
             <div class="text-center space-y-3">
                 <p class="text-brand-gold font-semibold tracking-[0.2em] uppercase">Confidence • Creativity • Fashion Sense • Stage Presence</p>
                 <p class="text-gray-300 text-lg max-w-2xl mx-auto italic">Step into the spotlight and unleash the star within. A premium platform to showcase your unique style and presence.</p>
+            </div>
+
+            <div class="pt-2 max-w-md mx-auto">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group">
+                        <i class="ph-bold ph-download-simple text-xl mt-1 transition-transform"></i>
+                        Download Official Brochure
+                    </a>
             </div>
 
             <div>

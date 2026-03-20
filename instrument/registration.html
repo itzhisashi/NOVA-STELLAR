@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Band Registration | Nova Stellar 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }, colors: { 'brand-dark': '#050505', 'brand-card': '#0a0a0a', 'brand-gold': '#d4af37', 'brand-gold-light': '#f5d061', 'brand-gold-dark': '#997a15' } } } }
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { background-color: #000000; color: #f3f4f6; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 5px; }
+        .glass-nav, .glass-modal { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(214,177,58,0.2); }
+        .glass-card { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.15); }
+        .modal-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        #rules-modal { transition: opacity 0.4s ease, visibility 0.4s ease; }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-brand-gold selection:text-black min-h-screen flex flex-col overflow-hidden">
 
+    <div id="rules-modal" class="fixed inset-0 z-[100] flex items-center justify-center glass-modal px-4">
+        <div class="glass-card max-w-3xl w-full rounded-[2rem] p-8 md:p-10 shadow-[0_0_50px_rgba(212,175,55,0.15)] relative max-h-[90vh] overflow-y-auto text-center">
+            <i class="ph-duotone ph-guitar text-5xl text-brand-gold-light mb-3"></i>
+            <h2 class="text-3xl font-display font-bold text-white uppercase tracking-tight mb-6">Live Band Rules</h2>
+            
+            <div id="rulesContainer" class="space-y-4 text-gray-300 text-sm md:text-base mb-8 text-left">
+                </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../registration.html" class="px-8 py-3 rounded-xl border border-gray-600 text-gray-300 font-bold hover:bg-gray-800 transition-all text-center">Decline & Go Back</a>
+                <button id="acceptBtn" onclick="acceptRules()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold hover:shadow-[0_0_30px_rgba(245,208,97,0.4)] transition-all flex items-center justify-center gap-2" style="display:none;">
+                    I Accept <i class="ph-bold ph-check-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <a href="../registration.html" class="font-display font-bold text-lg text-white"><i class="ph-bold ph-arrow-left mr-1"></i> BACK</a>
+            <div class="flex flex-col text-right">
+                <span class="font-display font-bold text-lg text-white">NOVA STELLAR</span>
+                <span class="text-[10px] text-brand-gold uppercase tracking-widest">SFS College</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-24 flex items-center justify-center">
+        <div class="max-w-3xl mx-auto px-4 w-full">
+            <div class="text-center mb-10 space-y-2" id="formHeader">
+                <h1 class="text-4xl sm:text-5xl font-display font-bold text-white">Live Band Registration</h1>
+                <p class="text-brand-gold font-semibold tracking-widest uppercase text-sm mt-2">Entry Fee: ₹1500 per Group</p>
+            </div>
+
+            <div class="glass-card rounded-[2rem] p-6 sm:p-10 shadow-[0_0_50px_rgba(212,175,55,0.1)]">
+                <form id="bandForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-brand-gold uppercase">Participant Type</label>
+                        <select id="type" name="type" required class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold appearance-none">
+                            <option value="" disabled selected>-- Choose College Affiliation --</option>
+                            <option value="sfs">Intra College (SFS Student)</option>
+                            <option value="other">Inter College (Other College)</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-brand-gold text-xs font-bold uppercase border-b border-brand-gold/20 pb-2">Team Details</h3>
+                        <input type="text" name="teamName" placeholder="Band / Team Name" class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3 focus:border-brand-gold" required>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="text" name="name" placeholder="Leader Full Name" class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3" required>
+                            <input type="tel" name="phone" placeholder="WhatsApp Number" class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3" required>
+                        </div>
+                        <input type="email" name="email" placeholder="Email Address" class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3" required>
+                        <input type="text" id="collegeName" name="college" placeholder="College Name" class="w-full bg-black border border-gray-800 text-white rounded-xl px-4 py-3 hidden">
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-brand-gold text-xs font-bold uppercase border-b border-brand-gold/20 pb-2">Band Members (Max 7 Total)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" name="member2" placeholder="Member 2 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                            <input type="text" name="member3" placeholder="Member 3 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                            <input type="text" name="member4" placeholder="Member 4 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                            <input type="text" name="member5" placeholder="Member 5 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                            <input type="text" name="member6" placeholder="Member 6 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                            <input type="text" name="member7" placeholder="Member 7 Name" class="w-full bg-black border border-gray-800 text-gray-400 rounded-xl px-4 py-3">
+                        </div>
+                    </div>
+
+                    <div class="bg-black border border-brand-gold/50 rounded-xl p-4 flex justify-between items-center">
+                        <span class="text-gray-300">Registration Fee:</span>
+                        <span class="text-2xl font-bold text-brand-gold-light">₹1500</span>
+                    </div>
+
+                    <button id="proceedBtn" type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-black font-bold text-lg py-4 rounded-xl hover:scale-[1.02] transition-all flex justify-center items-center gap-2">
+                        Proceed to Payment <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- REPLACE THIS WITH YOUR BAND GOOGLE APPS SCRIPT URL ---
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoSG6mfKVcKKAskMKJgDBv1WBw5dx9pCYaG6Mlf-dlFB9kGwk1Jr--08z5yxE-Bun3/exec";
+
+        const originalRulesHTML = `
+            <p>• <b>Time Limit:</b> 3 - 5 minutes</p>
+            <p>• <b>Band Size:</b> Maximum 7 members</p>
+            <p>• <b>Equipment:</b> Bands must bring their own instruments and equipment</p>
+            <p>• <b>Originality:</b> Pre-recorded music is not allowed</p>
+            <p>• <b>Check-in:</b> Participants must arrive early for sound check</p>
+            <p>• <b>Conduct:</b> Follow a decent dress code; Judges' decision will be final</p>
+        `;
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const rulesContainer = document.getElementById("rulesContainer");
+            const acceptBtn = document.getElementById("acceptBtn");
+            const proceedBtn = document.getElementById("proceedBtn");
+
+            // Show Loading State
+            rulesContainer.innerHTML = `<div class="text-center py-8"><div class="w-10 h-10 border-4 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin mx-auto mb-4"></div><p class="text-brand-gold font-bold animate-pulse">Checking Band Slot Availability...</p></div>`;
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+
+                if (data.isFull) {
+                    rulesContainer.innerHTML = `
+                        <div class="text-center py-6 glass-card border-red-500/30 rounded-2xl bg-red-500/10">
+                            <i class="ph-duotone ph-warning-circle text-6xl text-red-500 mb-2"></i>
+                            <h3 class="text-2xl font-bold text-white mb-2">Registration Closed</h3>
+                            <p class="text-gray-300">We have reached the maximum capacity of ${data.maxSeats} bands for the competition.</p>
+                        </div>
+                    `;
+                    if(proceedBtn) {
+                        proceedBtn.disabled = true;
+                        proceedBtn.innerHTML = "Registration Full";
+                        proceedBtn.classList.replace("from-brand-gold", "from-gray-600");
+                        proceedBtn.classList.replace("to-brand-gold-light", "to-gray-500");
+                    }
+                } else {
+                    rulesContainer.innerHTML = originalRulesHTML + `
+                        <div class="mt-6 p-4 bg-brand-gold/10 border border-brand-gold/30 rounded-xl text-center shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                            <p class="text-brand-gold-light text-lg font-bold">🔥 Hurry Up! Only ${data.seatsAvailable} slots remaining!</p>
+                        </div>
+                    `;
+                    acceptBtn.style.display = 'flex';
+                    
+                    const formHeader = document.getElementById("formHeader");
+                    if(formHeader) {
+                        formHeader.innerHTML += `<div class="inline-block mt-4 px-4 py-2 bg-brand-gold/20 border border-brand-gold/50 rounded-full text-brand-gold-light text-sm font-bold animate-pulse">🔥 Only ${data.seatsAvailable} Slots Left!</div>`;
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching availability:", error);
+                rulesContainer.innerHTML = originalRulesHTML;
+                acceptBtn.style.display = 'flex';
+            }
+        });
+
+        function acceptRules() { 
+            document.getElementById('rules-modal').classList.add('modal-hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        const typeSelect = document.getElementById('type');
+        const collegeInput = document.getElementById('collegeName');
+
+        typeSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                collegeInput.classList.remove('hidden');
+                collegeInput.setAttribute('required', 'true');
+            } else {
+                collegeInput.classList.add('hidden');
+                collegeInput.removeAttribute('required');
+                collegeInput.value = 'SFS College';
+            }
+        });
+
+        document.getElementById('bandForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.amount_rupees = 1500;
+            data.eventName = "Live Band Competition";
+            data.college = data.type === 'sfs' ? 'SFS College' : data.college;
+            
+            sessionStorage.setItem("bandRegData", JSON.stringify(data));
+            window.location.href = "payment.html";
+        });
+    </script>
+</body>
+</html>
